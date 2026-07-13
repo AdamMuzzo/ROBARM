@@ -41,7 +41,7 @@ Buy this batch first. It is enough to print fit checks and prove one motor, one 
 | Ferrules | Insulated bootlace ferrule assortment covering **22-18 AWG** minimum; square/hex crimp style is fine | 1 | [Amazon.ca ferrule search](https://www.amazon.ca/wire-end-ferrules/s?k=wire+end+ferrules) / [Adafruit reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) | ~$15-$35 |
 | USB data cable | USB-A to USB-C or USB-C to USB-C, confirmed data-capable | 1 | [Octopus Pro documentation](https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro) | ~$10-$15 |
 | M3 starter hardware | 630-piece M3 SHCS/nut/washer kit, Bearings Canada SKU `VXB0F8HMFNZK` | 1 | [Bearings Canada](https://bearingscanada.com/products/all-in-one-m3-screws-assortment-kit-with-nuts-and) | **$38.06 actual** |
-| Heat-set inserts | M3 x 6 mm brass inserts; buy 25-50 even though the official BOM uses four | 1 pack | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DmZR9AN) | ~$10-$20 |
+| Heat-set inserts | Select **M3(OD4.5mm)** and **6mm 30 pcs**; brass heat-set inserts for M3 screws | 1 pack | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DmZR9AN) | ~$10-$20 |
 | Bench consumables | Heat shrink, zip ties, blue threadlocker, solder, flux and electrical tape | 1 set | See [Consumables](#consumables-and-small-accessories) | ~$25-$35 |
 
 **Recommended first-order subtotal: about $590-$655 CAD before tax and shipping.**
@@ -157,7 +157,7 @@ Using the generic tapered-bearing options, the mechanical transmission and beari
 | Tool connector | M8 female sensor connector, 4 pin | 1 | ~$10-$25 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DDQz9iP) |
 | Controller power connector | XT30 female | 1 plus 1 spare | ~$5-$15 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DllR7eL) |
 | E-stop gland | PG7 | 1 plus 1 spare | ~$5-$10 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DdJj62p) |
-| Heat-set inserts | M3 x 6 mm | 25-50 | ~$10-$20 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DmZR9AN) |
+| Heat-set inserts | Select **M3(OD4.5mm)** and **6mm 30 pcs**; brass heat-set inserts for M3 screws | 1 pack | ~$10-$20 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DmZR9AN) |
 | Driver thermal interface | Non-conductive thermal paste or thermal adhesive; only if not included with drivers/heatsinks | 1 small tube | ~$8-$15 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c2u86OEn) |
 | Power wire | 18 AWG stranded **copper**, red/black, 300 V or higher insulation; do not buy CCA/aluminum wire | 3-5 m each | ~$20-$40 | [Amazon.ca search](https://www.amazon.ca/s?k=18+AWG+stranded+copper+wire+red+black+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/cnc-tech/1569-18-1-0500-004-1-TS/28739620) |
 | Motor/signal wire | 22-24 AWG flexible stranded copper, at least 6 colours, 300 V or higher insulation | 5-10 m total | ~$20-$50 | [Amazon.ca search](https://www.amazon.ca/s?k=22+AWG+stranded+copper+hookup+wire+kit+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/2976/6226990) |
