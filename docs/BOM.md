@@ -30,7 +30,7 @@ Buy this batch first. It is enough to print fit checks and prove one motor, one 
 | Bench-test motor | **Already ordered:** StepperOnline `17HS16-2004S1`, NEMA 17, 45 Ncm, 42 x 42 x 40 mm | 1 of the 3 ordered | [StepperOnline](https://www.omc-stepperonline.com/nema-17-bipolar-45ncm-64oz-in-2a-42x42x40mm-4-wires-w-1m-cable-connector-17hs16-2004s1) | $0 still to order |
 | Controller fan | Noctua `NF-A4x20 5V`, 40 x 40 x 20 mm, **5 V version** | 1 | [Noctua part page](https://www.noctua.at/en/products/nf-a4x20-5v) | ~$24-$35 |
 | Limit switches | `ZW12-3` microswitches | 3 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DBq6eeF) | ~$10-$25 |
-| Emergency stop | Normally closed panel E-stop | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) | ~$10-$25 |
+| Emergency stop | Select **19 mm** and **NO NC (3 PINS)**; latching red mushroom panel switch. Use the COM and NC terminals | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) | ~$10-$25 |
 | E-stop cable gland | `PG7` | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DdJj62p) | ~$5-$10 |
 | DIN rail | Mean Well `TS35/7.5-200`, DigiKey `1866-TS35/7.5-200-ND` | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) | **$1.49 actual** |
 | Fused AC inlet | Qualtek `723W-BEL3BR51A`, switched C14 inlet with fuse drawer, DigiKey `189-723W-BEL3BR51A-ND` | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) | **$11.12 actual** |
@@ -97,7 +97,7 @@ These are the final full-arm quantities. Items already included in the first ord
 | J1 homing sensor | 4 mm, NPN, normally open inductive sensor | 1 | ~$10-$20 | ~$10-$20 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c40MRkk5) |
 | J2 homing sensor | Panasonic-style `GX-F8A` inductive sensor | 1 | ~$10-$20 | ~$10-$20 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c4VxLtW3) |
 | J3 homing sensor | M5, NPN, normally open inductive sensor | 1 | ~$10-$20 | ~$10-$20 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3zGvxrP) |
-| Emergency stop | Normally closed panel E-stop | 1 | ~$10-$25 | ~$10-$25 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) |
+| Emergency stop | **19 mm**, latching red mushroom, `NO NC (3 PINS)` option; wire COM + NC | 1 | ~$10-$25 | ~$10-$25 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) |
 
 **Main controller, motors, gearboxes, supply and fan: about $605-$615 CAD before tax and shipping.** Sensors and safety parts add roughly **$50-$110 CAD**.
 
@@ -155,6 +155,8 @@ Using the generic tapered-bearing options, the mechanical transmission and beari
 | USB cable | Data-capable USB-C cable for Octopus Pro | 1 plus 1 spare | ~$10-$20 | [Controller documentation](https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro) |
 
 The Mean Well supply has exposed mains terminals. Protective earth must be bonded correctly, live terminals must be enclosed, and the AC input must be fused and strain-relieved. Have a qualified person inspect the mains side if there is any uncertainty.
+
+For the three-pin E-stop, do not trust terminal position or colour alone. Identify COM and NC with a multimeter: they must have continuity while the button is released and become open-circuit while it is latched down. The emergency-stop action must remove motor power or the hardware driver-enable path rather than depend only on software.
 
 ## Exact Fastener Order
 
