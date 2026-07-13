@@ -26,6 +26,7 @@ The repo also includes the interactive simulator we built for planning motion, a
 - `docs/TOOLS.md` - bench tools needed for the build
 - `docs/ASSEMBLY_ROADMAP.md` - staged build plan
 - `docs/DIAGRAMS.md` - architecture and wiring diagrams
+- `docs/HANDOFF_PROMPT.md` - copy/paste prompt for orienting another chat
 - `docs/images/` - simulator screenshots committed for documentation
 
 ## Run The Simulator
