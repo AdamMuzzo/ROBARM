@@ -1,212 +1,397 @@
-import type { ArmDimensions, JointKey, JointLimit, JointState, PartSpec } from './types';
-
-export const armDimensions: ArmDimensions = {
-  baseRadius: 0.18,
-  baseHeight: 0.14,
-  shoulderHeight: 0.34,
-  upperArmLength: 0.56,
-  forearmLength: 0.46,
-  wristLength: 0.18,
-  gripperLength: 0.16,
-  toolCenterOffset: 0.38,
-  maxPayloadKg: 2.5
-};
-
-export const homePose: JointState = {
-  base: 0,
-  shoulder: 34,
-  elbow: -42,
-  wristPitch: 10,
-  wristRoll: 0,
-  gripper: 35
-};
+import type { JointKey, JointLimit, JointState, MechanicalPartId, PartSpec } from './types';
 
 export const jointLimits: Record<JointKey, JointLimit> = {
-  base: { min: -180, max: 180, label: 'Base yaw', unit: 'deg' },
-  shoulder: { min: -40, max: 105, label: 'Shoulder pitch', unit: 'deg' },
-  elbow: { min: -130, max: 115, label: 'Elbow pitch', unit: 'deg' },
-  wristPitch: { min: -115, max: 115, label: 'Wrist pitch', unit: 'deg' },
-  wristRoll: { min: -180, max: 180, label: 'Wrist roll', unit: 'deg' },
-  gripper: { min: 0, max: 100, label: 'Gripper open', unit: '%' }
+  j1: { min: -97, max: 97, label: 'Base rotation', shortLabel: 'J1', group: 'base' },
+  j2: { min: -56, max: 57, label: 'Shoulder', shortLabel: 'J2', group: 'arm' },
+  j3: { min: -115, max: 74, label: 'Elbow', shortLabel: 'J3', group: 'arm' },
+  j4: { min: -115, max: 115, label: 'Forearm roll', shortLabel: 'J4', group: 'wrist' },
+  j5: { min: -120, max: 120, label: 'Wrist pitch', shortLabel: 'J5', group: 'wrist' },
+  j6: { min: -178, max: 178, label: 'Tool roll', shortLabel: 'J6', group: 'wrist' }
+};
+
+export const jointOrder: JointKey[] = ['j1', 'j2', 'j3', 'j4', 'j5', 'j6'];
+
+export const homePose: JointState = {
+  j1: 0,
+  j2: 0,
+  j3: 0,
+  j4: 0,
+  j5: 0,
+  j6: 0
 };
 
 export const scriptedPoses: Array<{ name: string; joints: JointState }> = [
-  {
-    name: 'Home',
-    joints: homePose
-  },
-  {
-    name: 'Pick low',
-    joints: { base: -35, shoulder: 8, elbow: -78, wristPitch: 54, wristRoll: 0, gripper: 88 }
-  },
-  {
-    name: 'Lift',
-    joints: { base: -20, shoulder: 62, elbow: -38, wristPitch: -20, wristRoll: 24, gripper: 22 }
-  },
-  {
-    name: 'Inspect',
-    joints: { base: 62, shoulder: 45, elbow: -12, wristPitch: -44, wristRoll: 110, gripper: 42 }
-  },
-  {
-    name: 'Place',
-    joints: { base: 118, shoulder: 18, elbow: -70, wristPitch: 48, wristRoll: -70, gripper: 92 }
-  }
+  { name: 'Home', joints: homePose },
+  { name: 'Reach', joints: { j1: -32, j2: 28, j3: -58, j4: 18, j5: 34, j6: 0 } },
+  { name: 'Inspect', joints: { j1: 42, j2: -22, j3: 52, j4: -48, j5: -36, j6: 72 } },
+  { name: 'Service', joints: { j1: 0, j2: -44, j3: 18, j4: 88, j5: 12, j6: -45 } }
 ];
 
 export const partCatalog: PartSpec[] = [
   {
-    id: 'base',
+    id: 'baseLink',
     category: 'mechanical',
-    name: 'Anchored base plate',
-    summary: 'Layered circular foundation with leveling feet, anchor bolts, access cover, and cable pass-throughs.',
-    material: 'Machined aluminum tooling plate, dark anodized lower ring, steel fasteners',
-    dimensions: '360 mm diameter footprint, 24 mm plate, 140 mm base stack, 4 leveling feet',
-    motion: 'Static. All simulated coordinates are measured from this origin.',
-    serviceNote: 'Level this assembly first; every joint zero and reach measurement depends on the base plane.'
+    modelType: 'stl',
+    name: 'Base assembly',
+    assemblyRole: 'Fixed structure',
+    sourceFile: 'base_link.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/base_link.STL',
+    meshFile: 'base_link.stl',
+    dimensionsMm: [227, 125, 71],
+    quantity: 1,
+    massKg: 0.813,
+    summary: 'The fixed PAROL6 electronics enclosure and mounting structure beneath the rotating axis stack.',
+    buildNote: 'Square and secure the base before establishing any joint zeros.'
   },
   {
-    id: 'turntable',
+    id: 'link1',
     category: 'mechanical',
-    name: 'J1 yaw turntable',
-    summary: 'Bearing-ring yaw stage with visible gear teeth, harmonic reducer cover, wire gland, and bolt pattern.',
-    material: 'Machined aluminum table, hardened bearing ring, polymer cable guard',
-    dimensions: '220 mm rotating table, 180 deg/s simulated no-load limit, 72-tooth visual ring',
-    motion: '-180 deg to +180 deg yaw around the vertical Y axis.',
-    serviceNote: 'Cable slack is represented in the model; real wiring needs a controlled loop or slip ring.'
+    modelType: 'stl',
+    name: 'J1 rotating base',
+    assemblyRole: 'Base yaw assembly',
+    sourceFile: 'L1.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/L1.STL',
+    meshFile: 'L1.stl',
+    dimensionsMm: [122, 238, 86],
+    quantity: 1,
+    massKg: 0.645,
+    joint: 'j1',
+    summary: 'The complete yaw-stage link, including the real turret profile, motor clearances, bearing housings, and covers.',
+    buildNote: 'Leave a controlled service loop for every cable crossing the J1 axis.'
   },
   {
-    id: 'shoulder',
+    id: 'link2',
     category: 'mechanical',
-    name: 'J2 shoulder bracket',
-    summary: 'Contoured double-shear shoulder yoke with bearing caps, through shaft, motor housing, and lightening pockets.',
-    material: '6 mm aluminum side plates, steel shoulder shaft, black anodized motor cover',
-    dimensions: '340 mm pivot height, 126 mm bracket width, 96 mm bearing cap',
-    motion: '-40 deg to +105 deg pitch in the vertical plane.',
-    serviceNote: 'This joint sees the highest torque when the arm is fully extended.'
+    modelType: 'stl',
+    name: 'J2 shoulder link',
+    assemblyRole: 'Shoulder and upper arm',
+    sourceFile: 'L2.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/L2.STL',
+    meshFile: 'L2.stl',
+    dimensionsMm: [77, 240, 193],
+    quantity: 1,
+    massKg: 0.512,
+    joint: 'j2',
+    summary: 'The tall shoulder link that gives PAROL6 its narrow industrial silhouette and carries the elbow axis.',
+    buildNote: 'This is a high-load printed structure; follow the official orientation and PETG settings.'
   },
   {
-    id: 'upperArm',
+    id: 'link3',
     category: 'mechanical',
-    name: 'Upper arm link',
-    summary: 'Twin waterjet-style link plates with round pivot bosses, spacers, cable clips, and a segmented wire chain.',
-    material: 'Brushed aluminum link plates, black polymer cable chain, stainless spacer tubes',
-    dimensions: '560 mm pivot-to-pivot length',
-    motion: 'Follows J2 shoulder pitch and carries the elbow pivot at its distal end.',
-    serviceNote: 'Use matched spacers so both rails share load instead of twisting the elbow joint.'
-  },
-  {
-    id: 'elbow',
-    category: 'mechanical',
+    modelType: 'stl',
     name: 'J3 elbow hub',
-    summary: 'Compact elbow joint with a black servo can, amber harmonic-drive cover, bearing cap, and bolt circle.',
-    material: 'Aluminum hub, steel shaft, composite motor cover, brass-toned reducer cap',
-    dimensions: '120 mm hub diameter with 90 mm bearing cap',
-    motion: '-130 deg to +115 deg relative pitch.',
-    serviceNote: 'Route wires through the neutral side of the bend to avoid repeated compression.'
+    assemblyRole: 'Elbow transmission',
+    sourceFile: 'L3.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/L3.STL',
+    meshFile: 'L3.stl',
+    dimensionsMm: [102, 107, 65],
+    quantity: 1,
+    massKg: 0.551,
+    joint: 'j3',
+    summary: 'The compact elbow transmission between the long upper arm and the wrist-side forearm assembly.',
+    buildNote: 'Check pulley alignment and limit-switch actuation before closing the elbow covers.'
   },
   {
-    id: 'forearm',
+    id: 'link4',
     category: 'mechanical',
-    name: 'Forearm link',
-    summary: 'Tapered secondary link with pocketed side plates, slim cross tubes, belt cover, and protected wire run.',
-    material: 'Aluminum box spar, pocketed side plates, teal anodized service cover',
-    dimensions: '460 mm pivot-to-pivot length',
-    motion: 'Rotates from the elbow and carries the wrist assembly.',
-    serviceNote: 'The forearm is where exact mass matters most for realistic acceleration tuning.'
+    modelType: 'stl',
+    name: 'J4 forearm',
+    assemblyRole: 'Forearm roll assembly',
+    sourceFile: 'L4.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/L4.STL',
+    meshFile: 'L4.stl',
+    dimensionsMm: [86, 92, 194],
+    quantity: 1,
+    massKg: 0.393,
+    joint: 'j4',
+    summary: 'The long enclosed forearm with the production PAROL6 belt-drive and electronics-cover geometry.',
+    buildNote: 'Verify the internal belt path and wire clearance through the full roll range.'
   },
   {
-    id: 'wrist',
+    id: 'link5',
     category: 'mechanical',
-    name: 'J4/J5 wrist assembly',
-    summary: 'Small pitch yoke and coaxial roll module with bearing rings, wire relief, and tool flange.',
-    material: 'Machined aluminum yoke, compact radial bearings, black roll motor, printed wire guard',
-    dimensions: '180 mm wrist stack before gripper mount',
-    motion: 'Pitch -115 deg to +115 deg, roll -180 deg to +180 deg.',
-    serviceNote: 'Keep end-effector wiring concentric around the roll axis where possible.'
+    modelType: 'stl',
+    name: 'J5 wrist pitch',
+    assemblyRole: 'Wrist pitch assembly',
+    sourceFile: 'L5.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/L5.STL',
+    meshFile: 'L5.stl',
+    dimensionsMm: [57, 98, 54],
+    quantity: 1,
+    massKg: 0.185,
+    joint: 'j5',
+    summary: 'The compact pitch stage at the end of the forearm, represented with its actual housings and flange transition.',
+    buildNote: 'Keep the wrist cable bend radius generous and check for pinching at both limits.'
   },
   {
-    id: 'gripper',
+    id: 'link6',
     category: 'mechanical',
-    name: 'Parallel gripper',
-    summary: 'Linear-rail gripper with screw drive, sliding jaw carriages, replaceable pads, and visible guide rods.',
-    material: 'Aluminum jaw carriage, hardened guide rods, black rubber pads',
-    dimensions: '160 mm jaw length, 12 mm to 86 mm simulated opening',
-    motion: '0% closed to 100% open, driven symmetrically about tool centerline.',
-    serviceNote: 'Jaw pads are intentionally separate so different contact materials can be swapped later.'
+    modelType: 'stl',
+    name: 'J6 tool flange',
+    assemblyRole: 'Tool roll and output flange',
+    sourceFile: 'L6.STL',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/PAROL6_URDF/PAROL6/meshes/L6.STL',
+    meshFile: 'L6.stl',
+    dimensionsMm: [82, 58, 40],
+    quantity: 1,
+    massKg: 0.07,
+    joint: 'j6',
+    summary: 'The final roll link and mounting face where the ROBARM detachable end-effector adapter will attach.',
+    buildNote: 'Preserve concentricity here; tool-center offsets are measured from this output axis.'
   },
   {
-    id: 'controllerStack',
+    id: 'controller',
     category: 'electronics',
-    name: 'Main controller stack',
-    summary: 'Stacked control bay with microcontroller board, breakout terminals, fan, USB, emergency-stop loop, and status LEDs.',
-    material: 'FR-4 PCB, aluminum standoffs, ABS enclosure frame, copper terminal blocks',
-    dimensions: '145 mm x 105 mm controller tray, 38 mm stack height',
-    motion: 'Static electronics assembly mounted inside or beside the base enclosure.',
-    serviceNote: 'Keep logic ground star-connected and separate high-current motor return paths until the power entry point.',
-    diagram: ['24 V in -> fused distribution', 'USB/CAN -> motion controller', 'GPIO -> limit switches + E-stop', 'Step/Dir or CAN -> motor drivers']
+    modelType: 'glb',
+    name: 'BTT Octopus Pro',
+    assemblyRole: 'Main motion controller',
+    sourceFile: 'Octopus_Pro - beta.stp',
+    sourceUrl: 'https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro/blob/master/3D/Octopus_Pro%20-%20beta.stp',
+    meshFile: 'octopus-pro.glb',
+    dimensionsMm: [162, 100, 19],
+    quantity: 1,
+    priceCad: '$300-$330 kit',
+    summary: 'The planned central controller, shown from BIGTREETECH\'s populated STEP assembly with its real connectors, driver sockets, terminals, and board hardware.',
+    buildNote: 'The Octopus Pro is an integration experiment, not a drop-in replacement for the official PAROL6 controller.',
+    specifications: [
+      { label: 'Driver sockets', value: '8' },
+      { label: 'Robot axes used', value: '6' },
+      { label: 'Interface', value: 'USB + step/dir/SPI' },
+      { label: 'Main power', value: '12-24 VDC' }
+    ]
   },
   {
-    id: 'motorDriver',
+    id: 'driver',
     category: 'electronics',
-    name: 'Smart motor driver board',
-    summary: 'Single-axis driver with MOSFET bank, heatsink, bulk capacitors, encoder input, and motor phase terminals.',
-    material: 'FR-4 PCB, aluminum heatsink, copper bus bars, polymer terminal housings',
-    dimensions: '92 mm x 64 mm board, 28 mm heatsink height',
-    motion: 'Static. One board controls one motor axis in the electronics model.',
-    serviceNote: 'Mount drivers to an aluminum thermal path and leave clearance above the heatsink fins.',
-    diagram: ['VMOT/GND -> power supply', 'U/V/W or A/B -> motor phases', 'ENC A/B/Z -> encoder board', 'CTRL -> controller stack']
+    modelType: 'glb',
+    name: 'TMC5160 Pro driver',
+    assemblyRole: 'Plug-in stepper driver',
+    sourceFile: 'TMC5160_Pro V1.1.step',
+    sourceUrl: 'https://github.com/bigtreetech/BIGTREETECH-Stepper-Motor-Driver/blob/master/TMC5160(T)%20Pro%20V1.1/3D/TMC5160_Pro%20V1.1.step',
+    meshFile: 'tmc5160-pro.glb',
+    dimensionsMm: [20.4, 15.3, 23.2],
+    quantity: 6,
+    priceCad: 'Included in controller kit',
+    summary: 'One high-voltage SPI driver module per robot axis, rendered from BIGTREETECH\'s official populated board CAD.',
+    buildNote: 'Confirm each driver voltage-select jumper before power-up; an incorrect motor-power selection can destroy a module.',
+    specifications: [
+      { label: 'Input', value: '8-56 VDC' },
+      { label: 'Current', value: '3.1 A RMS' },
+      { label: 'Control', value: 'SPI' },
+      { label: 'Microsteps', value: 'Up to 256' }
+    ]
+  },
+  {
+    id: 'motor20',
+    category: 'electronics',
+    modelType: 'generated',
+    name: 'NEMA 17 / 20 mm',
+    assemblyRole: 'J6 compact stepper motor',
+    sourceFile: '17HS08-1004S',
+    sourceUrl: 'https://www.omc-stepperonline.com/nema-17-bipolar-1-8deg-16ncm-22-6oz-in-1a-3-7v-42x42x20mm-4-wires-17hs08-1004s',
+    dimensionsMm: [42, 42, 44],
+    quantity: 1,
+    priceCad: '~$11',
+    summary: 'The short NEMA 17 motor used where wrist mass and package length matter most.',
+    buildNote: 'Check the shaft flat, connector direction, and wrist cover clearance before final assembly.',
+    specifications: [
+      { label: 'Body', value: '42 x 42 x 20 mm' },
+      { label: 'Holding torque', value: '16 Ncm' },
+      { label: 'Rated current', value: '1.0 A' },
+      { label: 'Step angle', value: '1.8 deg' }
+    ]
+  },
+  {
+    id: 'motor40',
+    category: 'electronics',
+    modelType: 'generated',
+    name: 'NEMA 17 / 40 mm',
+    assemblyRole: 'Mid-load stepper motor',
+    sourceFile: '17HS16-2004S1',
+    sourceUrl: 'https://www.omc-stepperonline.com/nema-17-bipolar-45ncm-64oz-in-2a-42x42x40mm-4-wires-w-1m-cable-connector-17hs16-2004s1',
+    dimensionsMm: [42, 42, 64],
+    quantity: 3,
+    priceCad: '~$38 total',
+    summary: 'The medium-depth motor used across several PAROL6 belt-driven joints.',
+    buildNote: 'Keep the one-metre lead strain-relieved and clear of rotating link edges.',
+    specifications: [
+      { label: 'Body', value: '42 x 42 x 40 mm' },
+      { label: 'Holding torque', value: '45 Ncm' },
+      { label: 'Rated current', value: '2.0 A' },
+      { label: 'Step angle', value: '1.8 deg' }
+    ]
+  },
+  {
+    id: 'motor60',
+    category: 'electronics',
+    modelType: 'generated',
+    name: 'NEMA 17 / 60 mm',
+    assemblyRole: 'High-torque stepper motor',
+    sourceFile: '17HS24-2104S',
+    sourceUrl: 'https://www.omc-stepperonline.com/nema-17-bipolar-1-8deg-65ncm-92oz-in-2-1a-3-36v-42x42x60mm-4-wires-17hs24-2104s',
+    dimensionsMm: [42, 42, 84],
+    quantity: 2,
+    priceCad: '~$37 total',
+    summary: 'The long high-torque NEMA 17 motor used on the arm\'s most heavily loaded axes.',
+    buildNote: 'Set current conservatively during first motion tests and confirm the motor case cannot contact printed covers.',
+    specifications: [
+      { label: 'Body', value: '42 x 42 x 60 mm' },
+      { label: 'Holding torque', value: '65 Ncm' },
+      { label: 'Rated current', value: '2.1 A' },
+      { label: 'Step angle', value: '1.8 deg' }
+    ]
+  },
+  {
+    id: 'gearbox20',
+    category: 'electronics',
+    modelType: 'generated',
+    name: '20:1 planetary gearbox',
+    assemblyRole: 'J1/J2 reduction gearbox',
+    sourceFile: 'EG17-G20',
+    sourceUrl: 'https://www.omc-stepperonline.com/eg-series-planetary-gearbox-gear-ratio-20-1-backlash-20-arc-min-for-nema-17-stepper-motor-eg17-g20',
+    dimensionsMm: [42, 42, 88.5],
+    quantity: 2,
+    priceCad: '~$100 total',
+    summary: 'A NEMA 17 planetary reducer with square mounting flange, cylindrical gear housing, and keyed 8 mm output shaft.',
+    buildNote: 'Check backlash and shaft runout before coupling the gearbox to a printed joint assembly.',
+    specifications: [
+      { label: 'Ratio', value: '20:1' },
+      { label: 'Backlash', value: '<=20 arc-min' },
+      { label: 'Body length', value: '67 mm' },
+      { label: 'Output shaft', value: '8 x 21.5 mm' }
+    ]
+  },
+  {
+    id: 'gearbox10',
+    category: 'electronics',
+    modelType: 'generated',
+    name: '10:1 planetary gearbox',
+    assemblyRole: 'Reduced joint gearbox',
+    sourceFile: 'EG17-G10',
+    sourceUrl: 'https://www.omc-stepperonline.com/eg-series-planetary-gearbox-gear-ratio-10-1-backlash-15-arc-min-for-nema-17-stepper-motor-eg17-g10',
+    dimensionsMm: [42, 42, 88.5],
+    quantity: 1,
+    priceCad: '~$40',
+    summary: 'The lower-ratio version of the same compact planetary gearbox family.',
+    buildNote: 'Mark the ratio on the installed gearbox so axis configuration cannot be mixed later.',
+    specifications: [
+      { label: 'Ratio', value: '10:1' },
+      { label: 'Backlash', value: '<=15 arc-min' },
+      { label: 'Frame', value: '42 x 42 mm' },
+      { label: 'Output shaft', value: '8 mm keyed' }
+    ]
   },
   {
     id: 'powerSupply',
     category: 'electronics',
-    name: '24 V power supply',
-    summary: 'Perforated metal supply block with screw terminals, fan vents, mains guard, and DC output bus.',
-    material: 'Perforated steel cover, copper terminals, molded terminal barrier',
-    dimensions: '160 mm x 98 mm x 42 mm supply body',
-    motion: 'Static power component.',
-    serviceNote: 'Keep mains wiring guarded and route 24 V output through a fuse before the distribution bus.',
-    diagram: ['AC L/N/PE -> guarded input', '24 V out -> fuse block', '0 V out -> star ground', 'Chassis -> protective earth']
+    modelType: 'generated',
+    name: 'Mean Well EDR-120-24',
+    assemblyRole: 'DIN-rail 24 V supply',
+    sourceFile: 'EDR-120-24',
+    sourceUrl: 'https://www.meanwell.com/Upload/PDF/EDR-120/EDR-120-SPEC.PDF',
+    dimensionsMm: [40, 125.2, 113.5],
+    quantity: 1,
+    priceCad: '~$26',
+    summary: 'The enclosed DIN-rail power supply for the controller and six-axis motor system.',
+    buildNote: 'Guard the mains terminals, bond protective earth, and fuse the 24 V output before distribution.',
+    specifications: [
+      { label: 'Output', value: '24 V / 5 A' },
+      { label: 'Power', value: '120 W' },
+      { label: 'AC input', value: '90-264 VAC' },
+      { label: 'Mount', value: 'TS-35 DIN rail' }
+    ]
   },
   {
-    id: 'wiringHarness',
+    id: 'coolingFan',
     category: 'electronics',
-    name: 'Robot wiring harness',
-    summary: 'Bundled joint wiring with drag-chain links, strain reliefs, motor leads, encoder pairs, and sensor branch-outs.',
-    material: 'Silicone wire bundle, braided sleeve, nylon drag chain, keyed connectors',
-    dimensions: 'Modeled as routed bundles from base to wrist with 9 mm main sleeve diameter',
-    motion: 'Flexes with the joints in the main simulation through cable-loop geometry.',
-    serviceNote: 'Add strain relief at every moving transition; never let solder joints carry cable motion.',
-    diagram: ['Base bay -> J1 service loop', 'J1 -> shoulder drag chain', 'Elbow branch -> J3 motor + encoder', 'Wrist branch -> gripper + tool I/O']
+    modelType: 'generated',
+    name: 'Noctua NF-A4x20 5V',
+    assemblyRole: 'Controller cooling fan',
+    sourceFile: 'NF-A4x20 5V',
+    sourceUrl: 'https://www.noctua.at/en/products/nf-a4x20-5v/specifications',
+    dimensionsMm: [40, 40, 20],
+    quantity: 1,
+    priceCad: '~$20-$30',
+    summary: 'A compact 40 mm fan with the real square frame, anti-vibration pads, seven-blade impeller, hub, and sleeved lead.',
+    buildNote: 'Orient airflow through the driver heatsinks and keep the intake clear of loose wiring.',
+    specifications: [
+      { label: 'Supply', value: '5 VDC' },
+      { label: 'Speed', value: '5000 rpm max' },
+      { label: 'Airflow', value: '9.4 m3/h' },
+      { label: 'Mount spacing', value: '32 x 32 mm' }
+    ]
   },
   {
     id: 'limitSwitch',
     category: 'electronics',
-    name: 'Limit switch and homing sensor',
-    summary: 'Microswitch assembly with roller lever, bracket, two-pin signal connector, and adjustable stop screw.',
-    material: 'Black polymer switch body, spring steel lever, aluminum bracket',
-    dimensions: '28 mm x 16 mm x 10 mm switch body, 42 mm lever',
-    motion: 'Triggered by an axis cam during homing or over-travel protection.',
-    serviceNote: 'Use normally-closed wiring for fail-safe homing and fault detection.',
-    diagram: ['NC -> controller input', 'COM -> signal ground', 'Shield -> chassis at controller end', 'Axis cam -> roller lever']
+    modelType: 'generated',
+    name: 'ZW12-3 limit switch',
+    assemblyRole: 'Mechanical homing switch',
+    sourceFile: 'ZW12-3',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md#electronics',
+    dimensionsMm: [28, 20, 10],
+    quantity: 3,
+    priceCad: '~$10-$25 total',
+    summary: 'A lever microswitch with roller, snap-action body, terminals, and adjustable mounting holes.',
+    buildNote: 'Wire homing switches normally closed so a broken wire is detected as a fault.',
+    specifications: [
+      { label: 'Contact', value: 'NC preferred' },
+      { label: 'Signal', value: 'Digital input' },
+      { label: 'Axes', value: '3' }
+    ]
   },
   {
-    id: 'encoder',
+    id: 'inductiveSensor',
     category: 'electronics',
-    name: 'Magnetic encoder module',
-    summary: 'Small sensor PCB and magnet disk used for joint angle feedback.',
-    material: 'FR-4 PCB, diametric magnet, brass inserts, JST connector',
-    dimensions: '32 mm round magnet carrier, 24 mm x 18 mm sensor PCB',
-    motion: 'Magnet rotates with the joint shaft; sensor PCB remains fixed.',
-    serviceNote: 'Keep axial magnet spacing consistent before tuning closed-loop position control.',
-    diagram: ['VCC/GND -> controller 5 V rail', 'A/B/Z or SPI -> controller', 'Magnet -> joint shaft', 'PCB -> fixed bracket']
+    modelType: 'generated',
+    name: 'Inductive homing sensor',
+    assemblyRole: 'Non-contact position sensor',
+    sourceFile: 'M4 / M5 / GX-F8A sensor set',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md#electronics',
+    dimensionsMm: [12, 12, 48],
+    quantity: 3,
+    priceCad: '~$30-$60 total',
+    summary: 'A threaded cylindrical proximity sensor with lock nuts, sensing face, status indicator, and cable tail.',
+    buildNote: 'Verify NPN/PNP type and controller input voltage before connecting any proximity sensor.',
+    specifications: [
+      { label: 'Type', value: 'NPN, normally open' },
+      { label: 'Output', value: '3-wire' },
+      { label: 'Mount', value: 'Threaded barrel' }
+    ]
+  },
+  {
+    id: 'emergencyStop',
+    category: 'electronics',
+    modelType: 'generated',
+    name: 'Emergency stop',
+    assemblyRole: 'Normally-closed safety switch',
+    sourceFile: 'NC mushroom E-stop',
+    sourceUrl: 'https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md#electronics',
+    dimensionsMm: [40, 40, 78],
+    quantity: 1,
+    priceCad: '~$10-$25',
+    summary: 'A latching red mushroom actuator with yellow collar, panel body, and normally-closed contact block.',
+    buildNote: 'The E-stop must remove motor enable or motor power through a real hardware safety path, not software alone.',
+    specifications: [
+      { label: 'Contact', value: 'Normally closed' },
+      { label: 'Action', value: 'Push-lock / twist-release' },
+      { label: 'Circuit', value: 'Hardware enable loop' }
+    ]
   }
 ];
 
-export const jointOrder: JointKey[] = [
-  'base',
-  'shoulder',
-  'elbow',
-  'wristPitch',
-  'wristRoll',
-  'gripper'
-];
+export const mechanicalPartIds = partCatalog
+  .filter((part): part is PartSpec & { id: MechanicalPartId } => part.category === 'mechanical')
+  .map((part) => part.id);
+
+export const partById = Object.fromEntries(partCatalog.map((part) => [part.id, part])) as Record<
+  PartSpec['id'],
+  PartSpec
+>;
+
+export const modelFacts = {
+  source: 'Source Robotics PAROL6 URDF',
+  meshCount: 7,
+  triangleCount: 184_404,
+  nominalReachMm: 400
+};

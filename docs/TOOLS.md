@@ -2,6 +2,8 @@
 
 This build does not require a machine shop, but it does need careful mechanical assembly and wiring.
 
+For current Canadian prices, specific product links, and the staged first-batch tool budget, use the [priced tool checklist](BOM.md#tools-to-buy-if-missing). This page explains what each tool is for.
+
 ## Minimum Bench Tools
 
 | Tool | Why |

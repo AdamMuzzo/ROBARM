@@ -41,6 +41,12 @@ flowchart LR
 - The computer should command poses, jogs, and trajectories over USB.
 - The controller should own step timing, homing, limit switches, emergency-stop handling, and driver enable/disable.
 
+## Simulator Parts Catalog
+
+The simulator's Parts view has a dedicated Electronics tab containing the controller, six drivers, six motors across three body lengths, three planetary gearboxes, power supply, cooling fan, limit switches, inductive sensors, and emergency stop. Quantities follow `docs/BOM.md`, and every entry includes dimensions, planning data, a source reference, and a standalone 3D inspection model.
+
+The BTT Octopus Pro and TMC5160 Pro are rendered from converted manufacturer STEP assemblies. The other entries are dimensioned visual models intended for layout and purchasing review rather than fabrication.
+
 ## Official PAROL6 Controller Path
 
 The official controller is designed for PAROL6 firmware and PAROL6 Commander. It is likely the fastest way to get a working arm.
@@ -60,6 +66,8 @@ Cons:
 ## Octopus Pro Workaround
 
 The Octopus Pro route is cheaper and more hacker-friendly. It is also more work.
+
+It is not mechanically drop-in compatible with the official printed electronics case. The Octopus Pro board is approximately 162 x 100 mm, while the outer envelope of `Electronics_case_v1_1.STL` is only about 109 x 59.8 x 130.5 mm. The upstream design keeps the 40 x 125.2 x 113.5 mm Mean Well DIN supply external and feeds 24 V into the arm; it is not intended to fit under that printed cover. Use a separate custom control enclosure for the board, drivers, supply, fuses, mains inlet, DIN rail and cooling; retain the stock base print where the arm structure or cable routing requires it.
 
 Required work:
 

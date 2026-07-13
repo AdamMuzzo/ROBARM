@@ -28,7 +28,7 @@ Important context:
 - I have an Arduino Uno-compatible board, but it is not intended to be the main full-arm controller. It can be used for small learning tests only.
 - The main software/control architecture should be: computer program -> USB -> robot controller board -> stepper drivers/motors/sensors -> robot arm.
 - The official PAROL6 control board is expensive, so the current preferred experiment is a BIGTREETECH Octopus Pro with TMC5160 drivers.
-- The repo includes a React + Three.js simulator in src/ for planning motion, assemblies, electronics, and part layout.
+- The repo includes a React + Three.js simulator in src/ that renders the official PAROL6 URDF assembly meshes from public/models/parol6/. It models all six joints using the upstream URDF transforms and includes a mechanical/electronics BOM browser. The electronics view uses converted manufacturer CAD for the BTT Octopus Pro and TMC5160 Pro plus dimensioned Three.js models for the remaining BOM components.
 - A key original design goal is a detachable end-effector interface so the arm can use a claw, pen holder, vacuum pickup, camera mount, and other tools.
 
 When helping me:
@@ -37,7 +37,10 @@ When helping me:
 - Prefer staged purchasing and staged testing over buying everything at once.
 - Be honest about integration risk, especially around the controller workaround.
 - If you suggest parts, include links and prices in Canadian dollars when possible.
+- Treat docs/BOM.md as the staged purchasing source: keep exact quantities, current CAD prices, tool requirements, fasteners, and direct manufacturing-STL links together there.
 - If you change code, run npm run build.
 - If you change simulator rendering behavior, run the smoke test against a local Vite server.
+- Preserve the official PAROL6 mesh attribution and GPLv3 license files when changing or redistributing model assets.
+- Preserve the BIGTREETECH CAD provenance and redistribution caveat recorded in docs/MODEL_ATTRIBUTION.md.
 - Preserve the existing repo structure unless there is a clear reason to change it.
 ```
