@@ -32,13 +32,13 @@ Buy this batch first. It is enough to print fit checks and prove one motor, one 
 | Limit switches | `ZW12-3` microswitches | 3 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DBq6eeF) | ~$10-$25 |
 | Emergency stop | Select **19 mm** and **NO NC (3 PINS)**; latching red mushroom panel switch. Use the COM and NC terminals | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) | ~$10-$25 |
 | E-stop cable gland | `PG7` | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DdJj62p) | ~$5-$10 |
-| DIN rail | Mean Well `TS35/7.5-200`, DigiKey `1866-TS35/7.5-200-ND` | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) | **$1.49 actual** |
-| Fused AC inlet | Qualtek `723W-BEL3BR51A`, switched C14 inlet with fuse drawer, DigiKey `189-723W-BEL3BR51A-ND` | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) | **$11.12 actual** |
-| AC inlet fuse and cord | 3.15 A time-delay 5 x 20 mm fuse plus grounded C13 power cord | 1 each | [Fuse search: `5HT 3.15-R`](https://www.digikey.ca/en/products?keywords=5HT%203.15-R) / [cord `PC-ABK003F`](https://www.digikey.ca/en/products/detail/cinch-connectivity-solutions/PC-ABK003F/15777844) | ~$10-$20 |
-| 24 V output fuse | Inline ATO/ATC holder plus `028707.5U` 7.5 A fuse | 1 + 2 fuses | [Littelfuse 7.5 A fuse](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) | ~$5-$12 |
-| 18 AWG power wire | Flexible stranded copper, red and black, at least 3 m / 10 ft each | 2 colours | [DigiKey cut-length example](https://www.digikey.ca/en/products/detail/cnc-tech/1569-18-1-0500-004-1-TS/28739620) | ~$20-$30 |
-| 22-24 AWG signal wire | Flexible stranded copper, at least four colours | 1 assortment | [DigiKey 22 AWG example](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/2976/6226990) | ~$20-$35 |
-| Ferrules | Adafruit `5131`, 800-piece 22-7 AWG insulated ferrule kit | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) | **$26.93 actual** |
+| DIN rail | Generic TS35 rail, **35 mm x 7.5 mm**, 200 mm or longer; cut to length if needed | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=35mm+7.5mm+DIN+rail) / [DigiKey reference](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) | ~$8-$18 |
+| Fused AC inlet | Certified switched C14 inlet, IEC 60320 C14, 250 VAC, 10 A or higher, **5 x 20 mm fuse drawer**, with visible UL/cUL/CSA/ETL marking | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=C14+fused+switch+inlet+5x20+UL) / [Qualtek reference](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) | ~$10-$25 |
+| AC inlet fuse and cord | 3.15 A time-delay 5 x 20 mm fuse plus grounded C13 power cord; cord must be CSA/cUL/ETL listed | 1 each | [Fuse search](https://www.amazon.ca/s?k=3.15A+time+delay+5x20mm+fuse) / [C13 cord search](https://www.amazon.ca/s?k=CSA+C13+power+cord) | ~$15-$30 |
+| 24 V output fuse | Inline ATO/ATC holder, 18-14 AWG leads, plus **7.5 A** ATO/ATC blade fuse and spares | 1 + 2 fuses | [Amazon.ca search](https://www.amazon.ca/s?k=ATO+inline+fuse+holder+7.5A) / [Littelfuse reference](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) | ~$10-$22 |
+| 18 AWG power wire | Flexible stranded **copper** wire, red and black, 300 V or higher insulation, at least 3 m / 10 ft each; avoid CCA/aluminum wire | 2 colours | [Amazon.ca search](https://www.amazon.ca/s?k=18+AWG+stranded+copper+wire+red+black+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/cnc-tech/1569-18-1-0500-004-1-TS/28739620) | ~$20-$35 |
+| 22-24 AWG signal wire | Flexible stranded copper hookup wire, 300 V or higher insulation, at least four colours | 1 assortment | [Amazon.ca 22 AWG search](https://www.amazon.ca/s?k=22+AWG+stranded+copper+hookup+wire+kit+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/2976/6226990) | ~$20-$35 |
+| Ferrules | Insulated bootlace ferrule assortment covering **22-18 AWG** minimum; square/hex crimp style is fine | 1 | [Amazon.ca ferrule search](https://www.amazon.ca/wire-end-ferrules/s?k=wire+end+ferrules) / [Adafruit reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) | ~$15-$35 |
 | USB data cable | USB-A to USB-C or USB-C to USB-C, confirmed data-capable | 1 | [Octopus Pro documentation](https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro) | ~$10-$15 |
 | M3 starter hardware | 630-piece M3 SHCS/nut/washer kit, Bearings Canada SKU `VXB0F8HMFNZK` | 1 | [Bearings Canada](https://bearingscanada.com/products/all-in-one-m3-screws-assortment-kit-with-nuts-and) | **$38.06 actual** |
 | Heat-set inserts | M3 x 6 mm brass inserts; buy 25-50 even though the official BOM uses four | 1 pack | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DmZR9AN) | ~$10-$20 |
@@ -59,6 +59,20 @@ Using the BIQU China-shipped controller bundle instead lowers the original parts
 - Do not buy the official PAROL6 controller at the same time as the Octopus Pro experiment.
 - Do not buy all three gearboxes until the one-axis firmware and electrical test works.
 - Do not connect exposed mains wiring on the bench. The power inlet, protective earth, fuse and enclosure are part of the first test, not optional finishing work.
+
+### Fast-Ship Substitutions For DigiKey Control-Box Parts
+
+The DIN rail through ferrule items in the first-order table are commodity control-box parts, so Amazon Canada, Canadian Tire, Home Depot, Princess Auto or a local electronics supplier are acceptable when the exact specification is matched. Buy by the requirement, not by brand name.
+
+Safe substitutions:
+
+- DIN rail: any slotted or unslotted TS35 rail, 35 x 7.5 mm, 200 mm or longer.
+- 24 V DC branch protection: inline ATO/ATC holder with 18-14 AWG copper leads and a 7.5 A blade fuse.
+- Low-voltage wire: stranded copper hookup wire; red/black 18 AWG for 24 V power, 22-24 AWG multi-colour for signals.
+- Ferrules: insulated bootlace ferrules covering 22-18 AWG, plus a compatible ferrule crimper.
+- Ring/fork terminals: insulated terminals sized for 18-22 AWG wire, with M3/M4 ring terminals for protective-earth bonding.
+
+Use extra caution on the mains-entry parts. The fused C14 inlet, C13 cord and 5 x 20 mm AC fuse may come from Amazon, but only if the listing and the part itself show a real UL, cUL, CSA or ETL safety mark and the ratings are at least 250 VAC / 10 A for the inlet and cord. Do not use a no-name AC inlet with unclear markings inside a mains-powered enclosure.
 
 ## Physical Fit Status
 
@@ -145,13 +159,13 @@ Using the generic tapered-bearing options, the mechanical transmission and beari
 | E-stop gland | PG7 | 1 plus 1 spare | ~$5-$10 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DdJj62p) |
 | Heat-set inserts | M3 x 6 mm | 25-50 | ~$10-$20 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DmZR9AN) |
 | Driver thermal interface | Non-conductive thermal paste or thermal adhesive; only if not included with drivers/heatsinks | 1 small tube | ~$8-$15 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c2u86OEn) |
-| Power wire | 18 AWG stranded copper, red/black, 300 V or higher insulation | 3-5 m each | ~$20-$40 | [DigiKey cut-length example](https://www.digikey.ca/en/products/detail/cnc-tech/1569-18-1-0500-004-1-TS/28739620) |
-| Motor/signal wire | 22-24 AWG flexible stranded copper, at least 6 colours | 5-10 m total | ~$25-$50 | [DigiKey example](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/2976/6226990) |
-| Ferrules | Insulated ferrules covering 22-18 AWG | 1 assortment | ~$27 | [Adafruit `5131`](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) |
+| Power wire | 18 AWG stranded **copper**, red/black, 300 V or higher insulation; do not buy CCA/aluminum wire | 3-5 m each | ~$20-$40 | [Amazon.ca search](https://www.amazon.ca/s?k=18+AWG+stranded+copper+wire+red+black+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/cnc-tech/1569-18-1-0500-004-1-TS/28739620) |
+| Motor/signal wire | 22-24 AWG flexible stranded copper, at least 6 colours, 300 V or higher insulation | 5-10 m total | ~$20-$50 | [Amazon.ca search](https://www.amazon.ca/s?k=22+AWG+stranded+copper+hookup+wire+kit+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/2976/6226990) |
+| Ferrules | Insulated bootlace ferrules covering 22-18 AWG minimum | 1 assortment | ~$15-$35 | [Amazon.ca search](https://www.amazon.ca/wire-end-ferrules/s?k=wire+end+ferrules) / [Adafruit reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) |
 | Ring/fork terminals | Insulated 18-22 AWG; include M3/M4 earth ring terminals | 1 assortment | ~$15-$30 | [Princess Auto terminal kit](https://www.princessauto.com/product/PA0008960510) |
-| 24 V branch protection | Inline ATO holder and 7.5 A fuse; keep spare fuses | 1 holder + 3 fuses | ~$8-$15 | [Littelfuse `028707.5U`](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) |
-| AC entry | Certified switched/fused C14 inlet, 3.15 A time-delay fuse, C13 grounded cord | 1 set | ~$22-$35 | [Qualtek inlet](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) |
-| DIN rail | TS35, 35 x 7.5 mm, 200 mm length | 1 | $1.49 | [Mean Well `TS35/7.5-200`](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) |
+| 24 V branch protection | Inline ATO/ATC holder and 7.5 A blade fuse; keep spare fuses | 1 holder + 3 fuses | ~$10-$22 | [Amazon.ca search](https://www.amazon.ca/s?k=ATO+inline+fuse+holder+7.5A) / [Littelfuse reference](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) |
+| AC entry | Certified switched/fused C14 inlet, 3.15 A time-delay 5 x 20 mm fuse, CSA/cUL/ETL C13 grounded cord | 1 set | ~$25-$45 | [Amazon.ca inlet search](https://www.amazon.ca/s?k=C14+fused+switch+inlet+5x20+UL) / [Qualtek reference](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) |
+| DIN rail | TS35, 35 x 7.5 mm, 200 mm or longer | 1 | ~$8-$18 | [Amazon.ca search](https://www.amazon.ca/s?k=35mm+7.5mm+DIN+rail) / [Mean Well reference](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) |
 | USB cable | Data-capable USB-C cable for Octopus Pro | 1 plus 1 spare | ~$10-$20 | [Controller documentation](https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro) |
 
 The Mean Well supply has exposed mains terminals. Protective earth must be bonded correctly, live terminals must be enclosed, and the AC input must be fused and strain-relieved. Have a qualified person inspect the mains side if there is any uncertainty.
