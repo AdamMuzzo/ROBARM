@@ -4,6 +4,20 @@ This is the actionable PAROL6 ordering checklist for the Octopus Pro controller 
 
 Filament is excluded because it is already on hand.
 
+## Purchase Status
+
+Updated 2026-07-13. These parts have already been ordered and must not be purchased again.
+
+| Status | Supplier | Part | Qty ordered | Order note |
+|---|---|---|---:|---|
+| **Ordered** | StepperOnline | `17HS08-1004S`, NEMA 17, 16 Ncm, 20/21.5 mm body | 1 | J6 compact motor |
+| **Ordered** | StepperOnline | `17HS16-2004S1`, NEMA 17, 45 Ncm, 40 mm body | 3 | Mid-load motors |
+| **Ordered** | StepperOnline | `17HS24-2104S`, NEMA 17, 65 Ncm, 60 mm body | 2 | High-load motors |
+| **Ordered** | StepperOnline | `EG17-G20`, 20:1 planetary gearbox | 2 | J1/J2 reduction |
+| **Ordered** | StepperOnline | `EG17-G10`, 10:1 planetary gearbox | 1 | Lower-ratio reduction |
+
+**StepperOnline order coverage: all six motors and all three gearboxes.** Actual paid total, shipping, tax and order number have not yet been recorded.
+
 ## Recommended First Order
 
 Buy this batch first. It is enough to print fit checks and prove one motor, one limit switch, controller power, cooling, USB control, and emergency-stop wiring before committing to every gearbox and bearing.
@@ -13,7 +27,7 @@ Buy this batch first. It is enough to print fit checks and prove one motor, one 
 | Controller and drivers | BIGTREETECH Octopus Pro V1.1 H723 kit, NorthPrint SKU `3991432078`; includes **8 TMC5160T Pro drivers** | 1 kit | [NorthPrint3D](https://northprint3d.ca/product/bigtreetech-btt-octopus-pro-v1-1-h723-with-tmc5160-t-pro/) | **$308.00 actual** |
 | Lower-cost controller source | Select **Type: Octopus Pro V1.1 with Chip H723** and **Size: With 8 PCs TMC5160T Pro**; BIQU SKU `1020000432*1+1050000063*8`, ships from China | 1 kit | [BIQU preselected variant](https://biqu.equipment/products/bigtreetech-octopus-pro-v1-0-chip-f446?variant=40310085812322) | **~$255 converted** ($179.56 USD) |
 | 24 V supply | Mean Well `EDR-120-24`, DigiKey `1866-1441-ND`, 24 V / 5 A / 120 W | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/EDR-120-24/7702914) | **$39.20 actual** |
-| Bench-test motor | StepperOnline `17HS16-2004S1`, NEMA 17, 45 Ncm, 42 x 42 x 40 mm | 1 | [StepperOnline](https://www.omc-stepperonline.com/nema-17-bipolar-45ncm-64oz-in-2a-42x42x40mm-4-wires-w-1m-cable-connector-17hs16-2004s1) | ~$13 |
+| Bench-test motor | **Already ordered:** StepperOnline `17HS16-2004S1`, NEMA 17, 45 Ncm, 42 x 42 x 40 mm | 1 of the 3 ordered | [StepperOnline](https://www.omc-stepperonline.com/nema-17-bipolar-45ncm-64oz-in-2a-42x42x40mm-4-wires-w-1m-cable-connector-17hs16-2004s1) | $0 still to order |
 | Controller fan | Noctua `NF-A4x20 5V`, 40 x 40 x 20 mm, **5 V version** | 1 | [Noctua part page](https://www.noctua.at/en/products/nf-a4x20-5v) | ~$24-$35 |
 | Limit switches | `ZW12-3` microswitches | 3 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DBq6eeF) | ~$10-$25 |
 | Emergency stop | Normally closed panel E-stop | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) | ~$10-$25 |
@@ -32,9 +46,11 @@ Buy this batch first. It is enough to print fit checks and prove one motor, one 
 
 **Recommended first-order subtotal: about $590-$655 CAD before tax and shipping.**
 
+Because the bench-test motor is already covered by the StepperOnline order, approximately **$577-$642 CAD** of this first-order list remains unpurchased, excluding any other orders not yet recorded.
+
 This subtotal assumes no tools are needed. The minimum new-tool budget is another **$250-$350 CAD**, but only buy tools that are not already available.
 
-Using the BIQU China-shipped controller bundle instead lowers the parts subtotal to roughly **$537-$602 CAD** before its shipping, tax and possible import charges. The H723 board does not include an onboard fuse, so keep the fused AC inlet and 7.5 A protected 24 V branch in the order.
+Using the BIQU China-shipped controller bundle instead lowers the original parts subtotal to roughly **$537-$602 CAD**, or approximately **$524-$589 CAD still to order** after removing the purchased bench-test motor. These figures are before BIQU shipping, tax and possible import charges. The H723 board does not include an onboard fuse, so keep the fused AC inlet and 7.5 A protected 24 V branch in the order.
 
 ### Do Not Duplicate These Items
 
@@ -230,17 +246,17 @@ Use the official [print table](https://github.com/Source-Robotics/PAROL6-Desktop
 
 ## Later Purchase: Remaining Full Arm
 
-After the first motor can jog, stop, and home reliably, order:
+After the first motor can jog, stop, and home reliably, order the remaining unpurchased hardware:
 
-1. The remaining five motors.
-2. Two `EG17-G20` and one `EG17-G10` gearboxes.
-3. All four belts, three motor pulleys and three shaft couplers.
-4. The complete large-bearing and tension-bearing quantities.
-5. The three inductive homing sensors and the remaining connectors.
-6. The remaining padded fastener bags.
-7. Remaining structural STLs, one joint group at a time.
+1. All four belts, three motor pulleys and three shaft couplers.
+2. The complete large-bearing and tension-bearing quantities.
+3. The three inductive homing sensors and the remaining connectors.
+4. The remaining padded fastener bags.
+5. Remaining structural STLs, one joint group at a time.
 
-Expected remaining hardware after the first order: **about $600-$850 CAD** before tax and shipping.
+The remaining five motors, two `EG17-G20` gearboxes and one `EG17-G10` gearbox from the old sequence are already covered by the StepperOnline order.
+
+Expected remaining hardware after the first order, excluding the motors and gearboxes already ordered: **about $380-$630 CAD** before tax and shipping.
 
 ## Budget Summary
 
@@ -248,7 +264,7 @@ Expected remaining hardware after the first order: **about $600-$850 CAD** befor
 |---|---:|
 | Recommended first order, no tools | **$590-$655** |
 | Required tools if starting from nothing | **+$250-$350** |
-| Remaining arm hardware after successful bench test | **+$600-$850** |
+| Remaining arm hardware after successful bench test, excluding ordered motors/gearboxes | **+$380-$630** |
 | Complete arm parts, wiring and practical spares | **about $1,200-$1,500** |
 | Realistic landed build with tax, shipping and replacement parts | **about $1,450-$1,850** |
 
