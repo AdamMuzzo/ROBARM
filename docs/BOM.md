@@ -27,6 +27,14 @@ Updated 2026-07-16. These parts have already been ordered and must not be purcha
 | **Ordered / waiting** | AliExpress | PG7 black cable gland pack | 1 pack | Covers the E-stop cable gland with spares. |
 | **Ordered / waiting** | AliExpress | 19 mm latching E-stop, `NO NC (3PINS)`, STOP mark | 1 | Correct option; wire COM + NC after multimeter check. |
 | **Ordered / waiting** | AliExpress | `ZW12-A-1` mini micro limit switch pack | 1 pack / 5 pcs | Covers the three switch quantity. Verify lever/body fit against the printed covers when it arrives. |
+| **Ordered / waiting** | AliExpress | J1 homing sensor, 4 mm NPN normally open inductive sensor | 1 | Verify body size, cable exit and sensing distance before final install. |
+| **Ordered / waiting** | AliExpress | J2 homing sensor, Panasonic-style `GX-F8A` inductive sensor | 1 | Verify body size and connector/wire colours before final install. |
+| **Ordered / waiting** | AliExpress | J3 homing sensor, M5 NPN normally open inductive sensor | 1 | Verify thread/body length before installing in the printed mount. |
+| **Ordered / waiting** | AliExpress | Illuminated power button, 12 mm, 3-6 V illumination | 1 | Covers the front-panel power button. |
+| **Ordered / waiting** | AliExpress | JST-PH 2.0 mm, 4-pin, 200 mm button lead | 1 | Covers the button lead. |
+| **Ordered / waiting** | AliExpress | GX16 2-pin arm power connector pair | 1 pair | Covers the arm power connector. |
+| **Ordered / waiting** | AliExpress | M8 female 4-pin tool connector | 1 | Covers the tool connector. |
+| **Ordered / waiting** | AliExpress | XT30 female connector | 2 | Covers one connector plus one spare. |
 | **Ordered / waiting** | AliExpress | M3 brass heat-set inserts, **M3(OD4.5mm)** and **6mm 30 pcs** | 1 pack | Covers the heat-set insert order. |
 | **Ordered / waiting** | Bearings Canada | All-in-one M3 socket-head screw, nut and washer assortment | 1 kit | Covers many M3 screws, nuts and washers but not all fastener requirements. |
 | **Ordered / waiting** | Harfington | `623ZZ`, 3 x 10 x 4 mm, double shield | 1 pack / 20 pcs | Covers large tension bearings. |
@@ -35,7 +43,7 @@ Updated 2026-07-16. These parts have already been ordered and must not be purcha
 | **Ordered / waiting** | Harfington | `AXK3552` with `AS3552` washers | 1 pack | Covers the J1 thrust-bearing stack, with spares. |
 | **Ordered / waiting** | 123Bearing Canada | Generic `32907`, 35 x 55 x 14 mm tapered roller bearing set | 4 | Covers J1/J2 tapered-bearing quantity using the budget option. |
 
-**Recorded order coverage: all six motors, all three gearboxes, the PSU, controller board, all belts, all motor pulleys, all shaft couplers, all major bearings, E-stop, PG7 gland pack, heat-set inserts, M3 starter hardware and limit-switch pack.**
+**Recorded order coverage: all six motors, all three gearboxes, the PSU, controller board, all belts, all motor pulleys, all shaft couplers, all major bearings, E-stop, PG7 gland pack, heat-set inserts, homing sensors, arm connectors, M3 starter hardware and limit-switch pack.**
 
 Controller caveat: the Octopus line must be checked when the parcel arrives. The documented ROBARM controller path needs **Octopus Pro V1.1 H723 plus eight TMC5160T Pro drivers**. A board-only order or TMC2209 bundle is not enough for the current BOM.
 
@@ -47,9 +55,6 @@ Known still-to-order items as of 2026-07-16:
 |---|---|---:|---|---|
 | Verify first | TMC5160T Pro stepper drivers | 8 | [BIQU official](https://biqu.equipment/products/tmc5160-pro-v1-0) / [Amazon.ca 4-pack](https://www.amazon.ca/BIGTREETECH-TMC5160-Stepper-Ultra-Silent-Heatsink/dp/B0B3J39QQC) | Only order if the Octopus parcel does not include eight TMC5160T Pro drivers. |
 | High | Noctua `NF-A4x20 5V` fan | 1 | [Noctua product page](https://www.noctua.at/en/products/nf-a4x20-5v) | Use the 5 V version for the controller cooling plan. |
-| High | J1 homing sensor | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c40MRkk5) | 4 mm, NPN, normally open inductive sensor. |
-| High | J2 homing sensor | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c4VxLtW3) | Panasonic-style `GX-F8A` inductive sensor. |
-| High | J3 homing sensor | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3zGvxrP) | M5, NPN, normally open inductive sensor. |
 | High | Fused AC inlet | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=C14+fused+switch+inlet+5x20+UL) / [Qualtek reference](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) | Certified switched/fused C14 inlet, 250 VAC / 10 A or higher, 5 x 20 mm fuse drawer. |
 | High | AC fuse and grounded C13 cord | 1 set | [Fuse search](https://www.amazon.ca/s?k=3.15A+time+delay+5x20mm+fuse) / [C13 cord search](https://www.amazon.ca/s?k=CSA+C13+power+cord) | 3.15 A time-delay 5 x 20 mm fuse; cord must be CSA/cUL/ETL listed. |
 | High | 24 V output fuse holder and fuses | 1 set | [Amazon.ca search](https://www.amazon.ca/s?k=ATO+inline+fuse+holder+7.5A) / [Littelfuse reference](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) | Inline ATO/ATC holder plus 7.5 A blade fuse and spares. |
@@ -58,12 +63,7 @@ Known still-to-order items as of 2026-07-16:
 | High | Ferrule assortment | 1 kit | [Amazon.ca search](https://www.amazon.ca/wire-end-ferrules/s?k=wire+end+ferrules) / [Adafruit reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) | Insulated bootlace ferrules covering 22-18 AWG minimum. |
 | High | Ring/fork terminal assortment | 1 kit | [Princess Auto terminal kit](https://www.princessauto.com/product/PA0008960510) | Include M3/M4 earth ring terminals. |
 | High | TS35 DIN rail | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=35mm+7.5mm+DIN+rail) / [Mean Well reference](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) | 35 x 7.5 mm, 200 mm or longer, unless your PSU order includes usable rail. |
-| Medium | Illuminated power button | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DBpZV3h) | 12 mm panel button, 3-6 V illumination. |
-| Medium | Button lead | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DeObQ1D) | JST-PH 2.0 mm, 4 pin, 200 mm. |
 | Medium | JST-PH connector assortment | 1 kit | [DigiKey Canada](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/4422/11497499) | Useful for replacement button/sensor leads. |
-| Medium | GX16 arm power connector | 1 pair | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DcHjMfN) | 2 pin male/female pair. |
-| Medium | M8 tool connector | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DDQz9iP) | 4 pin female sensor connector. |
-| Medium | XT30 female connector | 2 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DllR7eL) | One plus one spare. |
 | Medium | USB data cable | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=USB-C+data+cable) / [Octopus Pro documentation](https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro) | Must be data-capable, not charge-only. |
 | Medium | Driver thermal interface | 1 small tube | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c2u86OEn) | Only needed if the driver/heatsink kit does not include pads or paste. |
 | Medium | Missing fastener fill-in | 1 batch | [Exact Fastener Order](#exact-fastener-order) | The M3 starter kit does not cover M2, M4, low-head, pan-head, countersunk or all long M3 needs. |
@@ -320,14 +320,14 @@ Use the official [print table](https://github.com/Source-Robotics/PAROL6-Desktop
 After the 2026-07-16 recorded orders, the remaining full-arm purchases are no longer the expensive motors, gearboxes or main bearings. Focus on the open items in [Remaining Shopping List](#remaining-shopping-list):
 
 1. Verify the Octopus package includes the correct H723 board and eight TMC5160T Pro drivers.
-2. Order the three inductive homing sensors and remaining arm connectors.
-3. Finish the control-box safety/wiring parts: fused AC entry, fuses, wire, ferrules, DIN rail and ring/fork terminals.
+2. Finish the control-box safety/wiring parts: fused AC entry, fuses, wire, ferrules, DIN rail and ring/fork terminals.
+3. Order the remaining convenience connector kit, USB cable, fan and driver thermal interface if not already included.
 4. Fill the fastener gaps not covered by the M3 starter kit.
 5. Print and assemble remaining structural STLs one joint group at a time.
 
-Do not reorder the motors, gearboxes, PSU, belts, pulleys, shaft couplers, major bearings, E-stop, PG7 glands, heat-set inserts, M3 starter kit or limit-switch pack unless an incoming part fails inspection.
+Do not reorder the motors, gearboxes, PSU, belts, pulleys, shaft couplers, major bearings, E-stop, PG7 glands, heat-set inserts, homing sensors, arm connectors, M3 starter kit or limit-switch pack unless an incoming part fails inspection.
 
-Expected remaining hardware after the recorded orders: **about $270-$510 CAD** before tax and shipping if the Octopus order includes the eight TMC5160T Pro drivers. Add roughly **$80-$160 CAD** if the drivers were not included.
+Expected remaining hardware after the recorded orders: **about $210-$430 CAD** before tax and shipping if the Octopus order includes the eight TMC5160T Pro drivers. Add roughly **$80-$160 CAD** if the drivers were not included.
 
 ## Budget Summary
 
@@ -335,7 +335,7 @@ Expected remaining hardware after the recorded orders: **about $270-$510 CAD** b
 |---|---:|
 | Recommended first order, no tools | **$590-$655** |
 | Required tools if starting from nothing | **+$250-$350** |
-| Remaining arm hardware after recorded 2026-07-16 orders, assuming Octopus drivers were included | **+$270-$510** |
+| Remaining arm hardware after recorded 2026-07-16 orders, assuming Octopus drivers were included | **+$210-$430** |
 | Add if Octopus order was board-only or wrong-driver bundle | **+$80-$160** |
 | Complete arm parts, wiring and practical spares | **about $1,200-$1,500** |
 | Realistic landed build with tax, shipping and replacement parts | **about $1,450-$1,850** |
