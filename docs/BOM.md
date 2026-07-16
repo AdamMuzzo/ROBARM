@@ -6,17 +6,70 @@ Filament is excluded because it is already on hand.
 
 ## Purchase Status
 
-Updated 2026-07-13. These parts have already been ordered and must not be purchased again.
+Updated 2026-07-16. These parts have already been ordered and must not be purchased again unless a delivery problem or fit problem is found.
 
 | Status | Supplier | Part | Qty ordered | Order note |
 |---|---|---|---:|---|
-| **Ordered** | StepperOnline | `17HS08-1004S`, NEMA 17, 16 Ncm, 20/21.5 mm body | 1 | J6 compact motor |
-| **Ordered** | StepperOnline | `17HS16-2004S1`, NEMA 17, 45 Ncm, 40 mm body | 3 | Mid-load motors |
-| **Ordered** | StepperOnline | `17HS24-2104S`, NEMA 17, 65 Ncm, 60 mm body | 2 | High-load motors |
-| **Ordered** | StepperOnline | `EG17-G20`, 20:1 planetary gearbox | 2 | J1/J2 reduction |
-| **Ordered** | StepperOnline | `EG17-G10`, 10:1 planetary gearbox | 1 | Lower-ratio reduction |
+| **Ordered / waiting** | BIGTREETECH / BIQU | Octopus Pro V1.0/V1.1 controller listing | 1 | Verify on arrival that the board is **V1.1 H723** and that **8 TMC5160T Pro drivers** were included. If it was board-only, drivers are still required. |
+| **Ordered / waiting** | StepperOnline | `17HS08-1004S`, NEMA 17, 16 Ncm, 20/21.5 mm body | 1 | J6 compact motor |
+| **Ordered / waiting** | StepperOnline | `17HS16-2004S1`, NEMA 17, 45 Ncm, 40 mm body | 3 | Mid-load motors |
+| **Ordered / waiting** | StepperOnline | `17HS24-2104S`, NEMA 17, 65 Ncm, 60 mm body | 2 | High-load motors |
+| **Ordered / waiting** | StepperOnline | `EG17-G20`, 20:1 planetary gearbox | 2 | J1/J2 reduction |
+| **Ordered / waiting** | StepperOnline | `EG17-G10`, 10:1 planetary gearbox | 1 | Lower-ratio reduction |
+| **Ordered / waiting** | Mean Well / marketplace | `EDR-120-24`, 24 V / 5 A / 120 W DIN-rail PSU | 1 | User listed the same PSU twice; tracked as one supply unless a second order is confirmed. |
+| **Ordered / waiting** | AliExpress | Rigid flange shaft coupler, 8 mm bore | 3 | Covers all three shaft flange couplers. |
+| **Ordered / waiting** | AliExpress | HTD3M belt, 342 mm pitch length, 6 mm width, 114 teeth | 1 | Covers the J3 belt. |
+| **Ordered / waiting** | AliExpress | HTD3M 15T pulley, 5 mm bore, 10 mm belt-width option | 1 | Covers the J1 motor pulley. |
+| **Ordered / waiting** | AliExpress | HTD3M 12T pulley, 5 mm bore, 10 mm belt-width option | 2 | Covers the J4/J5 motor pulleys. |
+| **Ordered / waiting** | AliExpress | PG7 black cable gland pack | 1 pack | Covers the E-stop cable gland with spares. |
+| **Ordered / waiting** | AliExpress | 19 mm latching E-stop, `NO NC (3PINS)`, STOP mark | 1 | Correct option; wire COM + NC after multimeter check. |
+| **Ordered / waiting** | AliExpress | `ZW12-A-1` mini micro limit switch pack | 1 pack / 5 pcs | Covers the three switch quantity. Verify lever/body fit against the printed covers when it arrives. |
+| **Ordered / waiting** | Bearings Canada | All-in-one M3 socket-head screw, nut and washer assortment | 1 kit | Covers many M3 screws, nuts and washers but not all fastener requirements. |
+| **Ordered / waiting** | Harfington | `623ZZ`, 3 x 10 x 4 mm, double shield | 1 pack / 20 pcs | Covers large tension bearings. |
+| **Ordered / waiting** | Harfington | `693ZZ`, 3 x 8 x 4 mm, double shield | 1 pack / 20 pcs | Covers small tension bearings. |
+| **Ordered / waiting** | Harfington | Generic `32906X`, 30 x 47 x 12 mm tapered roller bearing set | 5 | Covers J3/J4/J5 tapered-bearing quantity. |
+| **Ordered / waiting** | Harfington | `AXK3552` with `AS3552` washers | 1 pack | Covers the J1 thrust-bearing stack, with spares. |
+| **Ordered / waiting** | 123Bearing Canada | Generic `32907`, 35 x 55 x 14 mm tapered roller bearing set | 4 | Covers J1/J2 tapered-bearing quantity using the budget option. |
 
-**StepperOnline order coverage: all six motors and all three gearboxes.** Actual paid total, shipping, tax and order number have not yet been recorded.
+**Recorded order coverage: all six motors, all three gearboxes, the PSU, controller board, J3 belt, all motor pulleys, all shaft couplers, all major bearings, E-stop, PG7 gland pack, M3 starter hardware and limit-switch pack.**
+
+Controller caveat: the Octopus line must be checked when the parcel arrives. The documented ROBARM controller path needs **Octopus Pro V1.1 H723 plus eight TMC5160T Pro drivers**. A board-only order or TMC2209 bundle is not enough for the current BOM.
+
+## Remaining Shopping List
+
+Known still-to-order items as of 2026-07-16:
+
+| Priority | Item | Qty | Notes |
+|---|---|---:|---|
+| Verify first | TMC5160T Pro stepper drivers | 8 | Only order if the Octopus parcel does not include eight TMC5160T Pro drivers. |
+| High | Noctua `NF-A4x20 5V` fan | 1 | Use the 5 V version for the controller cooling plan. |
+| High | J1 belt | 1 | HTD3M, 396 mm pitch length, 6 mm width, 132 teeth. |
+| High | J4 belt | 1 | HTD3M, 201 mm pitch length, 6 mm width, 67 teeth. |
+| High | J5 belt | 1 | HTD3M, 246 mm pitch length, 6 mm width, 82 teeth. |
+| High | J1 homing sensor | 1 | 4 mm, NPN, normally open inductive sensor. |
+| High | J2 homing sensor | 1 | Panasonic-style `GX-F8A` inductive sensor. |
+| High | J3 homing sensor | 1 | M5, NPN, normally open inductive sensor. |
+| High | Heat-set inserts | 1 pack | Select **M3(OD4.5mm)** and **6mm 30 pcs** if not already ordered. |
+| High | Fused AC inlet | 1 | Certified switched/fused C14 inlet, 250 VAC / 10 A or higher, 5 x 20 mm fuse drawer. |
+| High | AC fuse and grounded C13 cord | 1 set | 3.15 A time-delay 5 x 20 mm fuse; cord must be CSA/cUL/ETL listed. |
+| High | 24 V output fuse holder and fuses | 1 set | Inline ATO/ATC holder plus 7.5 A blade fuse and spares. |
+| High | 18 AWG power wire | 2 colours | Stranded copper, red/black, 300 V or higher insulation; avoid CCA/aluminum. |
+| High | 22-24 AWG signal wire | 1 assortment | Flexible stranded copper, multiple colours. |
+| High | Ferrule assortment | 1 kit | Insulated bootlace ferrules covering 22-18 AWG minimum. |
+| High | Ring/fork terminal assortment | 1 kit | Include M3/M4 earth ring terminals. |
+| High | TS35 DIN rail | 1 | 35 x 7.5 mm, 200 mm or longer, unless your PSU order includes usable rail. |
+| Medium | Illuminated power button | 1 | 12 mm panel button, 3-6 V illumination. |
+| Medium | Button lead | 1 | JST-PH 2.0 mm, 4 pin, 200 mm. |
+| Medium | JST-PH connector assortment | 1 kit | Useful for replacement button/sensor leads. |
+| Medium | GX16 arm power connector | 1 pair | 2 pin male/female pair. |
+| Medium | M8 tool connector | 1 | 4 pin female sensor connector. |
+| Medium | XT30 female connector | 2 | One plus one spare. |
+| Medium | USB data cable | 1 | Must be data-capable, not charge-only. |
+| Medium | Driver thermal interface | 1 small tube | Only needed if the driver/heatsink kit does not include pads or paste. |
+| Medium | Missing fastener fill-in | 1 batch | See [Exact Fastener Order](#exact-fastener-order); the M3 starter kit does not cover M2, M4, low-head, pan-head, countersunk or all long M3 needs. |
+| Medium | Bench consumables | 1 set | Heat shrink, zip ties, blue threadlocker, solder, flux, electrical tape, labels and bearing grease. |
+
+Defer the final control enclosure until the Octopus board, drivers, PSU, DIN rail, fuses, fan and wire bend radii are laid out in CAD. The stock PAROL6 electronics case does not fit the Octopus Pro or Mean Well PSU.
 
 ## Recommended First Order
 
@@ -264,17 +317,18 @@ Use the official [print table](https://github.com/Source-Robotics/PAROL6-Desktop
 
 ## Later Purchase: Remaining Full Arm
 
-After the first motor can jog, stop, and home reliably, order the remaining unpurchased hardware:
+After the 2026-07-16 recorded orders, the remaining full-arm purchases are no longer the expensive motors, gearboxes or main bearings. Focus on the open items in [Remaining Shopping List](#remaining-shopping-list):
 
-1. All four belts, three motor pulleys and three shaft couplers.
-2. The complete large-bearing and tension-bearing quantities.
-3. The three inductive homing sensors and the remaining connectors.
-4. The remaining padded fastener bags.
-5. Remaining structural STLs, one joint group at a time.
+1. Verify the Octopus package includes the correct H723 board and eight TMC5160T Pro drivers.
+2. Order the three remaining belts: J1 396 mm, J4 201 mm and J5 246 mm.
+3. Order the three inductive homing sensors and remaining arm connectors.
+4. Finish the control-box safety/wiring parts: fused AC entry, fuses, wire, ferrules, DIN rail and ring/fork terminals.
+5. Fill the fastener gaps not covered by the M3 starter kit.
+6. Print and assemble remaining structural STLs one joint group at a time.
 
-The remaining five motors, two `EG17-G20` gearboxes and one `EG17-G10` gearbox from the old sequence are already covered by the StepperOnline order.
+Do not reorder the motors, gearboxes, PSU, J3 belt, pulleys, shaft couplers, major bearings, E-stop, PG7 glands, M3 starter kit or limit-switch pack unless an incoming part fails inspection.
 
-Expected remaining hardware after the first order, excluding the motors and gearboxes already ordered: **about $380-$630 CAD** before tax and shipping.
+Expected remaining hardware after the recorded orders: **about $300-$550 CAD** before tax and shipping if the Octopus order includes the eight TMC5160T Pro drivers. Add roughly **$80-$160 CAD** if the drivers were not included.
 
 ## Budget Summary
 
@@ -282,7 +336,8 @@ Expected remaining hardware after the first order, excluding the motors and gear
 |---|---:|
 | Recommended first order, no tools | **$590-$655** |
 | Required tools if starting from nothing | **+$250-$350** |
-| Remaining arm hardware after successful bench test, excluding ordered motors/gearboxes | **+$380-$630** |
+| Remaining arm hardware after recorded 2026-07-16 orders, assuming Octopus drivers were included | **+$300-$550** |
+| Add if Octopus order was board-only or wrong-driver bundle | **+$80-$160** |
 | Complete arm parts, wiring and practical spares | **about $1,200-$1,500** |
 | Realistic landed build with tax, shipping and replacement parts | **about $1,450-$1,850** |
 
