@@ -43,31 +43,31 @@ Controller caveat: the Octopus line must be checked when the parcel arrives. The
 
 Known still-to-order items as of 2026-07-16:
 
-| Priority | Item | Qty | Notes |
-|---|---|---:|---|
-| Verify first | TMC5160T Pro stepper drivers | 8 | Only order if the Octopus parcel does not include eight TMC5160T Pro drivers. |
-| High | Noctua `NF-A4x20 5V` fan | 1 | Use the 5 V version for the controller cooling plan. |
-| High | J1 homing sensor | 1 | 4 mm, NPN, normally open inductive sensor. |
-| High | J2 homing sensor | 1 | Panasonic-style `GX-F8A` inductive sensor. |
-| High | J3 homing sensor | 1 | M5, NPN, normally open inductive sensor. |
-| High | Fused AC inlet | 1 | Certified switched/fused C14 inlet, 250 VAC / 10 A or higher, 5 x 20 mm fuse drawer. |
-| High | AC fuse and grounded C13 cord | 1 set | 3.15 A time-delay 5 x 20 mm fuse; cord must be CSA/cUL/ETL listed. |
-| High | 24 V output fuse holder and fuses | 1 set | Inline ATO/ATC holder plus 7.5 A blade fuse and spares. |
-| High | 18 AWG power wire | 2 colours | Stranded copper, red/black, 300 V or higher insulation; avoid CCA/aluminum. |
-| High | 22-24 AWG signal wire | 1 assortment | Flexible stranded copper, multiple colours. |
-| High | Ferrule assortment | 1 kit | Insulated bootlace ferrules covering 22-18 AWG minimum. |
-| High | Ring/fork terminal assortment | 1 kit | Include M3/M4 earth ring terminals. |
-| High | TS35 DIN rail | 1 | 35 x 7.5 mm, 200 mm or longer, unless your PSU order includes usable rail. |
-| Medium | Illuminated power button | 1 | 12 mm panel button, 3-6 V illumination. |
-| Medium | Button lead | 1 | JST-PH 2.0 mm, 4 pin, 200 mm. |
-| Medium | JST-PH connector assortment | 1 kit | Useful for replacement button/sensor leads. |
-| Medium | GX16 arm power connector | 1 pair | 2 pin male/female pair. |
-| Medium | M8 tool connector | 1 | 4 pin female sensor connector. |
-| Medium | XT30 female connector | 2 | One plus one spare. |
-| Medium | USB data cable | 1 | Must be data-capable, not charge-only. |
-| Medium | Driver thermal interface | 1 small tube | Only needed if the driver/heatsink kit does not include pads or paste. |
-| Medium | Missing fastener fill-in | 1 batch | See [Exact Fastener Order](#exact-fastener-order); the M3 starter kit does not cover M2, M4, low-head, pan-head, countersunk or all long M3 needs. |
-| Medium | Bench consumables | 1 set | Heat shrink, zip ties, blue threadlocker, solder, flux, electrical tape, labels and bearing grease. |
+| Priority | Item | Qty | Purchase link | Notes |
+|---|---|---:|---|---|
+| Verify first | TMC5160T Pro stepper drivers | 8 | [BIQU official](https://biqu.equipment/products/tmc5160-pro-v1-0) / [Amazon.ca 4-pack](https://www.amazon.ca/BIGTREETECH-TMC5160-Stepper-Ultra-Silent-Heatsink/dp/B0B3J39QQC) | Only order if the Octopus parcel does not include eight TMC5160T Pro drivers. |
+| High | Noctua `NF-A4x20 5V` fan | 1 | [Noctua product page](https://www.noctua.at/en/products/nf-a4x20-5v) | Use the 5 V version for the controller cooling plan. |
+| High | J1 homing sensor | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c40MRkk5) | 4 mm, NPN, normally open inductive sensor. |
+| High | J2 homing sensor | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c4VxLtW3) | Panasonic-style `GX-F8A` inductive sensor. |
+| High | J3 homing sensor | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3zGvxrP) | M5, NPN, normally open inductive sensor. |
+| High | Fused AC inlet | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=C14+fused+switch+inlet+5x20+UL) / [Qualtek reference](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) | Certified switched/fused C14 inlet, 250 VAC / 10 A or higher, 5 x 20 mm fuse drawer. |
+| High | AC fuse and grounded C13 cord | 1 set | [Fuse search](https://www.amazon.ca/s?k=3.15A+time+delay+5x20mm+fuse) / [C13 cord search](https://www.amazon.ca/s?k=CSA+C13+power+cord) | 3.15 A time-delay 5 x 20 mm fuse; cord must be CSA/cUL/ETL listed. |
+| High | 24 V output fuse holder and fuses | 1 set | [Amazon.ca search](https://www.amazon.ca/s?k=ATO+inline+fuse+holder+7.5A) / [Littelfuse reference](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) | Inline ATO/ATC holder plus 7.5 A blade fuse and spares. |
+| High | 18 AWG power wire | 2 colours | [Amazon.ca search](https://www.amazon.ca/s?k=18+AWG+stranded+copper+wire+red+black+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/cnc-tech/1569-18-1-0500-004-1-TS/28739620) | Stranded copper, red/black, 300 V or higher insulation; avoid CCA/aluminum. |
+| High | 22-24 AWG signal wire | 1 assortment | [Amazon.ca search](https://www.amazon.ca/s?k=22+AWG+stranded+copper+hookup+wire+kit+300V) / [DigiKey reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/2976/6226990) | Flexible stranded copper, multiple colours. |
+| High | Ferrule assortment | 1 kit | [Amazon.ca search](https://www.amazon.ca/wire-end-ferrules/s?k=wire+end+ferrules) / [Adafruit reference](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/5131/15650062) | Insulated bootlace ferrules covering 22-18 AWG minimum. |
+| High | Ring/fork terminal assortment | 1 kit | [Princess Auto terminal kit](https://www.princessauto.com/product/PA0008960510) | Include M3/M4 earth ring terminals. |
+| High | TS35 DIN rail | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=35mm+7.5mm+DIN+rail) / [Mean Well reference](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/TS35-7-5-200/22534704) | 35 x 7.5 mm, 200 mm or longer, unless your PSU order includes usable rail. |
+| Medium | Illuminated power button | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DBpZV3h) | 12 mm panel button, 3-6 V illumination. |
+| Medium | Button lead | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DeObQ1D) | JST-PH 2.0 mm, 4 pin, 200 mm. |
+| Medium | JST-PH connector assortment | 1 kit | [DigiKey Canada](https://www.digikey.ca/en/products/detail/adafruit-industries-llc/4422/11497499) | Useful for replacement button/sensor leads. |
+| Medium | GX16 arm power connector | 1 pair | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DcHjMfN) | 2 pin male/female pair. |
+| Medium | M8 tool connector | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DDQz9iP) | 4 pin female sensor connector. |
+| Medium | XT30 female connector | 2 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DllR7eL) | One plus one spare. |
+| Medium | USB data cable | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=USB-C+data+cable) / [Octopus Pro documentation](https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro) | Must be data-capable, not charge-only. |
+| Medium | Driver thermal interface | 1 small tube | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c2u86OEn) | Only needed if the driver/heatsink kit does not include pads or paste. |
+| Medium | Missing fastener fill-in | 1 batch | [Exact Fastener Order](#exact-fastener-order) | The M3 starter kit does not cover M2, M4, low-head, pan-head, countersunk or all long M3 needs. |
+| Medium | Bench consumables | 1 set | [Consumables and Small Accessories](#consumables-and-small-accessories) | Heat shrink, zip ties, blue threadlocker, solder, flux, electrical tape, labels and bearing grease. |
 
 Defer the final control enclosure until the Octopus board, drivers, PSU, DIN rail, fuses, fan and wire bend radii are laid out in CAD. The stock PAROL6 electronics case does not fit the Octopus Pro or Mean Well PSU.
 
