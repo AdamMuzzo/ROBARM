@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" role="img" aria-label="3D printed part">
+  <rect width="96" height="72" rx="8" fill="#f5f6f8"/>
+  <path d="M48 11l28 15v21L48 62 20 47V26z" fill="#d9e5f2" stroke="#4d6075" stroke-width="2"/>
+  <path d="M20 26l28 15 28-15M48 41v21" fill="none" stroke="#4d6075" stroke-width="2"/>
+  <path d="M33 33l30-15M42 38l30-15M24 28l30-15" stroke="#ffffff" stroke-width="2" opacity=".65"/>
+</svg>
