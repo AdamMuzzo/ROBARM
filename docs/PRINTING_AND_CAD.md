@@ -80,6 +80,8 @@ Their hierarchy, joint origins, rotation axes, limits, and inertial masses come 
 
 The upstream model files are GPLv3-licensed. Attribution and a local license copy are stored in `docs/MODEL_ATTRIBUTION.md` and `docs/third-party/PAROL6-GPL-3.0.txt`.
 
+The Parts view also includes all 41 manufacturing STLs from the upstream `STL/` tree. Lightweight Draco-compressed GLB previews are generated from those files for interactive exploded diagrams; the interface keeps each original STL filename and direct upstream download link. The visual previews are inspection aids, while the original STL files remain the manufacturing source of truth.
+
 For custom work, the practical plan is:
 
 1. Use official STLs for the base robot.

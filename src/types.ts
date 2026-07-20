@@ -26,7 +26,7 @@ export type ElectronicPartId =
 export type PartId = MechanicalPartId | ElectronicPartId;
 export type PartCategory = 'mechanical' | 'electronics';
 export type PartModelType = 'stl' | 'glb' | 'generated';
-export type TabId = 'simulation' | 'parts';
+export type TabId = 'simulation' | 'parts' | 'wiring';
 export type ViewMode = 'solid' | 'xray';
 export type CameraPreset = 'isometric' | 'front' | 'side' | 'top' | 'tool';
 export type AssemblyPhase = 'assembled' | 'disassembling' | 'disassembled' | 'reassembling';
@@ -87,6 +87,57 @@ export interface CameraRequest {
 export interface PartSpecification {
   label: string;
   value: string;
+}
+
+export type AssemblyHardwareKind =
+  | 'bolt'
+  | 'nut'
+  | 'insert'
+  | 'bearing'
+  | 'belt'
+  | 'pulley'
+  | 'motor'
+  | 'gearbox'
+  | 'coupler'
+  | 'sensor'
+  | 'switch'
+  | 'connector'
+  | 'fan'
+  | 'controller'
+  | 'pneumatic'
+  | 'tool';
+
+export interface AssemblyHardwareItem {
+  id: string;
+  name: string;
+  specification: string;
+  quantity: number;
+  kind: AssemblyHardwareKind;
+  note?: string;
+}
+
+export interface PrintedAssemblyComponent {
+  id: string;
+  name: string;
+  sourceFile: string;
+  previewFile: string;
+  sourceUrl: string;
+  step: number;
+  manualPages: string;
+  description: string;
+  hardwareIds: string[];
+  optional?: boolean;
+}
+
+export interface PartAssemblyBreakdown {
+  partId: MechanicalPartId;
+  label: string;
+  manualSection: string;
+  manualPages: string;
+  buildOrder: number;
+  note: string;
+  components: PrintedAssemblyComponent[];
+  hardware: AssemblyHardwareItem[];
 }
 
 export interface PartSpec {

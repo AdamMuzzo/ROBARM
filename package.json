@@ -8,7 +8,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "smoke": "node scripts/smoke-test.mjs",
-    "feature-test": "node scripts/feature-test.mjs"
+    "feature-test": "node scripts/feature-test.mjs",
+    "parts-test": "node scripts/parts-test.mjs",
+    "wiring-test": "node scripts/wiring-test.mjs",
+    "components:build": "node scripts/build-component-previews.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",

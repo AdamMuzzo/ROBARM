@@ -18,9 +18,11 @@ The repo also includes an interactive six-axis simulator for motion planning and
 ## Repo Map
 
 - `src/` - React + Three.js simulator source
-- `public/models/parol6/` - official PAROL6 URDF and seven assembly-link STL meshes used by the simulator
+- `public/models/parol6/` - official PAROL6 URDF, seven assembly-link meshes, and optimized previews generated from all 41 upstream printable STLs
 - `public/models/electronics/` - optimized BIGTREETECH controller and driver CAD used by the parts catalog
 - `scripts/smoke-test.mjs` - Playwright smoke test for canvases/screenshots
+- `scripts/parts-test.mjs` - focused test for printed-part explosions, hardware filtering, nested STL search, and mobile layout
+- `scripts/build-component-previews.mjs` - regenerates the lightweight GLB previews from a local clone of the official PAROL6 repository
 - `docs/BOM.md` - staged order checklist, exact quantities, CAD pricing, tool list, and direct first-batch STL downloads
 - `docs/ELECTRONICS.md` - controller architecture and board tradeoffs
 - `docs/PRINTING_AND_CAD.md` - 3D/CAD links, print notes, and bed-fit notes
@@ -47,6 +49,7 @@ Then open the Vite URL shown in the terminal.
 ```bash
 npm run build
 npm run smoke
+npm run parts-test
 ```
 
 The smoke test starts a browser against a running dev server, waits for the asynchronous model loads, checks both WebGL canvases for rendered pixels, exercises motion and X-ray modes, opens representative mechanical and electronics parts, and captures desktop/mobile screenshots.
@@ -65,6 +68,8 @@ The smoke test starts a browser against a running dev server, waits for the asyn
 - Live joint-limit, self-collision, and floor-clearance awareness for safer motion planning
 - Color-coded cable-routing overlay and front, side, top, isometric, and tool camera presets
 - Searchable parts catalog with one-click CSV BOM export
+- Per-subassembly disassembly controls with all 41 official printable files, manual page references, selectable components, and representative 3D hardware
+- Component-aware hardware lists and CSV export covering bearings, belts, pulleys, motors, gearboxes, sensors, connectors, and metric fasteners
 
 See [model attribution](docs/MODEL_ATTRIBUTION.md) for source and redistribution notes.
 
