@@ -87,6 +87,7 @@ input:disabled {
 }
 
 .app-shell {
+  height: 100dvh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -204,6 +205,7 @@ input:disabled {
   flex: 1;
   min-height: 0;
   display: grid;
+  grid-template-rows: minmax(0, 1fr);
   gap: 0.75rem;
   height: calc(100dvh - 74px);
   padding: 0.75rem;
@@ -861,6 +863,97 @@ input[type="range"] {
   font-size: 0.68rem;
 }
 
+.part-explode-control {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  width: min(22rem, calc(100% - 7rem));
+  padding: 0.62rem 0.72rem;
+  border: 1px solid rgba(38, 44, 45, 0.28);
+  border-radius: 6px;
+  background: rgba(247, 248, 246, 0.94);
+  box-shadow: 0 2px 5px rgba(20, 24, 25, 0.14);
+}
+
+.part-explode-control > div:first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.part-explode-control span {
+  color: var(--graphite-faint);
+  font-size: 0.63rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.part-explode-control strong {
+  color: var(--graphite);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.explode-presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+}
+
+.explode-presets button {
+  min-height: 30px;
+  padding: 0 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+}
+
+.explode-presets button.active {
+  color: #ffffff;
+  border-color: var(--orange-dark);
+  background: var(--orange-dark);
+}
+
+.part-color-key {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 3;
+  max-width: min(26rem, calc(100% - 1.5rem));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid rgba(38, 44, 45, 0.28);
+  border-radius: 5px;
+  background: rgba(247, 248, 246, 0.92);
+}
+
+.part-color-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: var(--graphite-soft);
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.part-color-key i {
+  width: 0.62rem;
+  height: 0.62rem;
+  display: block;
+  border: 1px solid rgba(32, 36, 38, 0.24);
+  border-radius: 2px;
+}
+
+.part-color-key .structure { background: #e5d9c7; }
+.part-color-key .cover { background: #6f8fa3; }
+.part-color-key .drive { background: #c56b3d; }
+.part-color-key .fixture { background: #84936c; }
+.part-color-key .hardware { background: #4f5a5e; }
+
 .metric-list,
 .fact-list,
 .detail-list {
@@ -1422,6 +1515,246 @@ input[type="range"] {
   margin: 0 0 1rem;
 }
 
+.assembly-breakdown {
+  margin: 0 0 1rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.breakdown-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #eceeed;
+}
+
+.breakdown-stats span {
+  min-width: 0;
+  display: grid;
+  gap: 0.08rem;
+  padding: 0.48rem 0.35rem;
+  color: var(--graphite-faint);
+  font-size: 0.58rem;
+  text-align: center;
+}
+
+.breakdown-stats span + span {
+  border-left: 1px solid var(--line);
+}
+
+.breakdown-stats b {
+  color: var(--graphite);
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.manual-reference {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  padding: 0.48rem 0.55rem;
+  color: var(--graphite-soft);
+  border-left: 3px solid var(--orange);
+  background: #f0f2f1;
+}
+
+.manual-reference svg {
+  color: var(--orange-dark);
+}
+
+.manual-reference span {
+  display: grid;
+  gap: 0.08rem;
+  font-size: 0.64rem;
+}
+
+.manual-reference b {
+  color: var(--graphite);
+  font-size: 0.7rem;
+}
+
+.assembly-note {
+  margin: 0.55rem 0 0;
+  color: var(--graphite-soft);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.component-breakdown,
+.hardware-breakdown {
+  margin-top: 0.9rem;
+}
+
+.breakdown-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+}
+
+.breakdown-heading > div {
+  min-width: 0;
+}
+
+.breakdown-heading span {
+  color: var(--orange-dark);
+  font-size: 0.57rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.breakdown-heading h3 {
+  margin: 0.12rem 0 0;
+  font-size: 0.88rem;
+  text-wrap: balance;
+}
+
+.breakdown-heading > button {
+  min-height: 28px;
+  padding: 0 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.breakdown-heading > b {
+  color: var(--graphite-faint);
+  font-size: 0.65rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.component-list,
+.hardware-list {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.component-row {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+}
+
+.component-step {
+  color: var(--graphite-faint);
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.component-copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.12rem;
+}
+
+.component-copy strong {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+}
+
+.component-copy em {
+  flex: 0 0 auto;
+  padding: 0.1rem 0.24rem;
+  color: var(--orange-dark);
+  border: 1px solid #d3a082;
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.component-copy small {
+  overflow: hidden;
+  color: var(--graphite-faint);
+  font-size: 0.58rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.component-copy .component-hardware-summary {
+  color: var(--graphite-soft);
+}
+
+.component-row.active {
+  color: #ffffff;
+  border-color: var(--orange-dark);
+  background: var(--orange-dark);
+}
+
+.component-row.active .component-step,
+.component-row.active small,
+.component-row.active em {
+  color: #ffffff;
+}
+
+.component-row.active em {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hardware-row {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.48rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.hardware-row > svg {
+  color: var(--orange-dark);
+}
+
+.hardware-row > span {
+  min-width: 0;
+  display: grid;
+  gap: 0.08rem;
+}
+
+.hardware-row strong,
+.hardware-row small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hardware-row strong {
+  font-size: 0.68rem;
+}
+
+.hardware-row small {
+  color: var(--graphite-faint);
+  font-size: 0.58rem;
+}
+
+.hardware-row .hardware-note {
+  color: #9a451f;
+  white-space: normal;
+}
+
+.hardware-row > b {
+  color: var(--graphite-soft);
+  font-size: 0.66rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .detail-list dd {
   max-width: 58%;
   font-size: 0.85rem;
@@ -1447,7 +1780,1569 @@ input[type="range"] {
   text-decoration: none;
 }
 
+.source-link.secondary-source {
+  margin-top: 0.4rem;
+  color: var(--graphite);
+  border-color: var(--line-dark);
+  background: #e8eae9;
+}
+
+/* Wiring dossier */
+.wiring-page {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.75rem;
+  color: var(--graphite);
+  background: #d7dcdb;
+}
+
+.wiring-hero {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(460px, 0.9fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  color: #f6f7f4;
+  border: 1px solid #1f2528;
+  border-radius: 6px 6px 0 0;
+  background: #252a2d;
+}
+
+.wiring-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #d98a62;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiring-hero h2 {
+  margin: 0.22rem 0 0;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: clamp(1.5rem, 2vw, 2.1rem);
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.wiring-hero p {
+  max-width: 50rem;
+  margin: 0.45rem 0 0;
+  color: #c4cbca;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.wiring-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border: 1px solid #4c5558;
+  border-radius: 4px;
+}
+
+.wiring-hero-facts div {
+  min-width: 0;
+  padding: 0.55rem 0.65rem;
+}
+
+.wiring-hero-facts div + div {
+  border-left: 1px solid #4c5558;
+}
+
+.wiring-hero-facts dt,
+.wiring-hero-facts dd {
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wiring-hero-facts dt {
+  color: #929c9e;
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiring-hero-facts dd {
+  margin-top: 0.16rem;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.73rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.wiring-print {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0 0.72rem;
+  color: #ffffff;
+  border-color: #c75420;
+  background: #b94a1b;
+  font-size: 0.68rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.wiring-safety-banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.62rem 1rem;
+  color: #532319;
+  border: 1px solid #b66b4f;
+  border-top: 0;
+  background: #f1d9cb;
+}
+
+.wiring-safety-banner > div {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
+.wiring-safety-banner strong {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+}
+
+.wiring-safety-banner span {
+  font-size: 0.68rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.wiring-layout {
+  display: grid;
+  grid-template-columns: minmax(210px, 240px) minmax(680px, 1fr) minmax(250px, 290px);
+  align-items: start;
+  min-height: calc(100dvh - 205px);
+  border: 1px solid var(--line-dark);
+  border-top: 0;
+  background: #eef0ef;
+}
+
+.wiring-index,
+.wiring-reference {
+  min-width: 0;
+  padding: 0.85rem;
+}
+
+.wiring-index {
+  position: sticky;
+  top: 0;
+}
+
+.wiring-reference {
+  position: sticky;
+  top: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.wiring-main {
+  min-width: 0;
+  padding: 0.85rem;
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: #e5e8e7;
+}
+
+.wiring-index-heading,
+.wiring-section-heading,
+.drawing-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.wiring-index-heading {
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.wiring-index-heading span,
+.wiring-index-heading strong,
+.wiring-section-heading span,
+.drawing-header span,
+.design-assumptions > span,
+.axis-focus > span {
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiring-index-heading span,
+.wiring-section-heading span,
+.drawing-header span,
+.axis-focus > span {
+  color: var(--graphite-faint);
+}
+
+.wiring-sheet-list {
+  display: grid;
+  gap: 0.38rem;
+  margin-top: 0.62rem;
+}
+
+.wiring-sheet-list button {
+  width: 100%;
+  min-height: 84px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: center;
+  gap: 0.15rem 0.4rem;
+  padding: 0.55rem 0.62rem;
+  text-align: left;
+}
+
+.wiring-sheet-list button span {
+  color: var(--orange-dark);
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wiring-sheet-list button strong {
+  grid-column: 1;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.82rem;
+}
+
+.wiring-sheet-list button small {
+  grid-column: 1 / -1;
+  color: var(--graphite-faint);
+  font-size: 0.6rem;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.wiring-sheet-list button::after {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  content: "→";
+  color: var(--graphite-faint);
+  font-size: 0.9rem;
+}
+
+.wiring-sheet-list button.active {
+  color: #ffffff;
+  border-color: #30383b;
+  background: #30383b;
+}
+
+.wiring-sheet-list button.active span,
+.wiring-sheet-list button.active small,
+.wiring-sheet-list button.active::after {
+  color: #ffffff;
+}
+
+.firmware-contract {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding: 0.65rem;
+  border-left: 3px solid var(--orange);
+  background: #e2e5e4;
+}
+
+.firmware-contract > div {
+  min-width: 0;
+  display: grid;
+  gap: 0.08rem;
+}
+
+.firmware-contract span,
+.firmware-contract small {
+  color: var(--graphite-faint);
+  font-size: 0.57rem;
+}
+
+.firmware-contract strong {
+  font-size: 0.68rem;
+}
+
+.axis-focus {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.axis-focus > div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.18rem;
+  margin-top: 0.42rem;
+}
+
+.axis-focus button {
+  min-height: 30px;
+  padding: 0;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.65rem;
+}
+
+.axis-focus button.active {
+  color: #ffffff;
+  border-color: var(--orange-dark);
+  background: var(--orange-dark);
+}
+
+.axis-focus dl {
+  margin: 0.45rem 0 0;
+}
+
+.axis-focus dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.34rem 0;
+  border-bottom: 1px solid #d7dbda;
+  font-size: 0.58rem;
+}
+
+.axis-focus dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.drawing-header {
+  align-items: center;
+  min-height: 66px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line-dark);
+  background: var(--surface-strong);
+}
+
+.drawing-header > div:first-child {
+  min-width: 0;
+}
+
+.drawing-header h3,
+.wiring-section-heading h3 {
+  margin: 0.08rem 0 0;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  text-wrap: balance;
+}
+
+.drawing-header h3 {
+  font-size: 1.05rem;
+}
+
+.drawing-header p {
+  margin: 0.2rem 0 0;
+  color: var(--graphite-faint);
+  font-size: 0.63rem;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.drawing-id {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  border: 1px solid var(--line);
+}
+
+.drawing-id span,
+.drawing-id b {
+  padding: 0.4rem 0.5rem;
+  color: var(--graphite);
+  font-size: 0.58rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.drawing-id b {
+  color: #ffffff;
+  background: var(--orange-dark);
+}
+
+.visual-hardware-guide {
+  padding: 0.75rem;
+  border: 1px solid var(--line-dark);
+  border-top: 0;
+  background: #f5f6f4;
+}
+
+.visual-guide-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.visual-guide-heading > div {
+  min-width: 0;
+}
+
+.visual-guide-heading > span,
+.visual-guide-heading div > span {
+  color: var(--orange-dark);
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.visual-guide-heading h3 {
+  margin: 0.08rem 0 0;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.98rem;
+  text-wrap: balance;
+}
+
+.visual-guide-heading p {
+  margin: 0.22rem 0 0;
+  color: var(--graphite-faint);
+  font-size: 0.63rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.visual-guide-heading > svg {
+  flex: 0 0 auto;
+  color: var(--orange-dark);
+}
+
+.hardware-visual-sequence {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hardware-visual-sequence > li {
+  min-width: 0;
+  border: 1px solid #c9cecd;
+  background: #ffffff;
+}
+
+.hardware-visual-sequence figure {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 150px minmax(0, 1fr);
+  margin: 0;
+}
+
+.hardware-photo {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 0.55rem;
+  border-bottom: 1px solid var(--line);
+  background: #e8ebea;
+}
+
+.hardware-photo::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: #ffffff;
+}
+
+.hardware-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.hardware-photo b {
+  position: absolute;
+  top: 0.45rem;
+  left: 0.45rem;
+  width: 1.55rem;
+  height: 1.55rem;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: #b94a1b;
+  box-shadow: 0 1px 3px rgba(20, 25, 27, 0.28);
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hardware-photo > span {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  padding: 0.2rem 0.34rem;
+  color: #ffffff;
+  background: #515b5e;
+  font-size: 0.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hardware-visual-sequence figcaption {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.58rem;
+}
+
+.hardware-visual-sequence figcaption small {
+  color: var(--orange-dark);
+  font-size: 0.54rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hardware-visual-sequence figcaption > strong {
+  margin-top: 0.1rem;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.78rem;
+}
+
+.hardware-visual-sequence figcaption p {
+  margin: 0.3rem 0 0;
+  color: var(--graphite-soft);
+  font-size: 0.58rem;
+  line-height: 1.42;
+  text-wrap: pretty;
+}
+
+.terminal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+  margin-top: auto;
+  padding-top: 0.48rem;
+}
+
+.terminal-tags span {
+  padding: 0.22rem 0.32rem;
+  color: #394245;
+  border: 1px solid #c9cecd;
+  background: #eef0ef;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.51rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.board-pinmap-reference {
+  margin-top: 0.55rem;
+  border: 1px solid #9da6a7;
+  background: #ffffff;
+}
+
+.board-pinmap-reference summary {
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.65rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.board-pinmap-reference summary::-webkit-details-marker {
+  display: none;
+}
+
+.board-pinmap-reference summary > span:first-child {
+  min-width: 0;
+  display: grid;
+  gap: 0.08rem;
+}
+
+.board-pinmap-reference summary strong {
+  font-size: 0.67rem;
+}
+
+.board-pinmap-reference summary small {
+  color: var(--graphite-faint);
+  font-size: 0.55rem;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.board-pinmap-reference summary > span:last-child {
+  padding: 0.34rem 0.48rem;
+  color: #ffffff;
+  background: #3e484b;
+  font-size: 0.55rem;
+  font-weight: 800;
+}
+
+.board-pinmap-reference[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.board-pinmap-reference[open] summary > span:last-child::after {
+  content: " open";
+}
+
+.board-pinmap-reference figure {
+  margin: 0;
+  padding: 0.7rem;
+}
+
+.board-pinmap-reference img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+
+.board-pinmap-reference figcaption {
+  margin-top: 0.45rem;
+  color: var(--graphite-faint);
+  font-size: 0.57rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.board-anatomy {
+  margin: 0 0.7rem 0.7rem;
+  border: 1px solid var(--line-dark);
+  background: #e9eceb;
+}
+
+.board-anatomy > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--line-dark);
+  background: #30393c;
+}
+
+.board-anatomy > header > div:first-child {
+  min-width: 0;
+}
+
+.board-anatomy > header > div:first-child > span {
+  color: #e09268;
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.board-anatomy h4 {
+  margin: 0.08rem 0 0;
+  color: #ffffff;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 1rem;
+  text-wrap: balance;
+}
+
+.board-anatomy > header p {
+  margin: 0.22rem 0 0;
+  color: #bdc5c6;
+  font-size: 0.58rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.board-status-key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.board-status-key span,
+.board-use-status {
+  padding: 0.22rem 0.35rem;
+  border: 1px solid currentColor;
+  font-size: 0.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.board-status-key .status-used {
+  color: #f0aa83;
+}
+
+.board-status-key .status-reserved {
+  color: #9dc4d5;
+}
+
+.board-status-key .status-unused {
+  color: #b4bdbf;
+}
+
+.board-status-key .status-service {
+  color: #b9cc9c;
+}
+
+.board-anatomy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  padding: 0.65rem;
+}
+
+.board-anatomy-grid article {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c1c7c6;
+  border-top-width: 5px;
+  background: #ffffff;
+}
+
+.board-anatomy-grid article > header {
+  display: grid;
+  grid-template-columns: 0.65rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.4rem;
+  padding: 0.55rem;
+  border-bottom: 1px solid #d5d9d8;
+}
+
+.board-anatomy-grid article > header i {
+  width: 0.65rem;
+  height: 0.65rem;
+  display: block;
+  margin-top: 0.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.board-anatomy-grid article > header > div {
+  min-width: 0;
+  display: grid;
+  gap: 0.08rem;
+}
+
+.board-anatomy-grid article > header small {
+  overflow: hidden;
+  color: var(--graphite-faint);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.49rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.board-anatomy-grid article > header strong {
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.7rem;
+}
+
+.board-use-status {
+  align-self: start;
+  font-size: 0.44rem;
+}
+
+.board-use-status.status-used {
+  color: #9e3e17;
+  background: #f6e0d4;
+}
+
+.board-use-status.status-reserved {
+  color: #426d80;
+  background: #e0eaee;
+}
+
+.board-use-status.status-unused {
+  color: #636c6e;
+  background: #eceeee;
+}
+
+.board-use-status.status-service {
+  color: #5d713f;
+  background: #e6ebdd;
+}
+
+.board-anatomy-grid dl {
+  margin: 0;
+  padding: 0.5rem 0.55rem;
+}
+
+.board-anatomy-grid dl > div {
+  display: grid;
+  grid-template-columns: 4.8rem minmax(0, 1fr);
+  gap: 0.42rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #e1e4e3;
+}
+
+.board-anatomy-grid dl > div:last-child {
+  border-bottom: 0;
+}
+
+.board-anatomy-grid dt,
+.board-anatomy-grid dd {
+  margin: 0;
+  font-size: 0.54rem;
+  line-height: 1.38;
+  text-wrap: pretty;
+}
+
+.board-anatomy-grid dt {
+  color: var(--graphite-faint);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.board-anatomy-grid dd {
+  color: var(--graphite-soft);
+}
+
+.board-anatomy-grid .robarm-assignment dd {
+  color: #273033;
+  font-weight: 700;
+}
+
+.board-caution {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.4rem;
+  margin: auto 0 0;
+  padding: 0.45rem 0.55rem;
+  color: #70331f;
+  border-top: 1px solid #d5a28d;
+  background: #f4e1d7;
+  font-size: 0.52rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.board-caution strong {
+  text-transform: uppercase;
+}
+
+.diagram-canvas {
+  overflow: auto;
+  border: 1px solid var(--line-dark);
+  border-top: 0;
+  background: #fbfcfa;
+}
+
+.wiring-svg {
+  width: 100%;
+  min-width: 700px;
+  height: auto;
+  display: block;
+}
+
+.wiring-svg text {
+  font-family: Aptos, Calibri, sans-serif;
+}
+
+.wiring-svg #wire-arrow path {
+  fill: currentColor;
+}
+
+.danger-zone {
+  fill: #f7e8e1;
+  stroke: #c16c4d;
+  stroke-width: 1.5;
+}
+
+.zone-label,
+.column-heading,
+.board-kicker,
+.diagram-callout,
+.harness-legend {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.zone-label.danger,
+.diagram-callout {
+  fill: #a83f1c;
+}
+
+.diagram-block rect {
+  fill: #f7f8f6;
+  stroke: #677174;
+  stroke-width: 1.5;
+}
+
+.diagram-block.tone-power rect {
+  fill: #f3dfd4;
+  stroke: #b95329;
+}
+
+.diagram-block.tone-logic rect {
+  fill: #dce7eb;
+  stroke: #517b8d;
+}
+
+.diagram-block.tone-safety rect {
+  fill: #efe0dc;
+  stroke: #a84a3f;
+}
+
+.diagram-block.tone-sensor rect {
+  fill: #e0e8d8;
+  stroke: #6d8657;
+}
+
+.diagram-block.tone-motor rect {
+  fill: #e1e4e4;
+  stroke: #4f5a5e;
+}
+
+.diagram-block-title {
+  fill: #22282a;
+  font-family: Bahnschrift, "DIN 2014", sans-serif !important;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.diagram-block-copy,
+.wire-label,
+.diagram-footnote,
+.diagram-callout-copy {
+  fill: #50595c;
+  font-size: 12px;
+}
+
+.wire {
+  fill: none;
+  stroke: #545e61;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.wire.mains-live {
+  color: #8d4f28;
+  stroke: #8d4f28;
+}
+
+.wire.mains-neutral {
+  color: #4f7894;
+  stroke: #4f7894;
+}
+
+.wire.earth {
+  color: #769342;
+  stroke: #769342;
+  stroke-dasharray: 9 4;
+}
+
+.wire.dc-positive {
+  color: #c64f2b;
+  stroke: #c64f2b;
+}
+
+.wire.dc-positive.switched {
+  stroke-width: 6;
+}
+
+.wire.dc-return {
+  color: #242a2d;
+  stroke: #242a2d;
+}
+
+.wire.safety-loop {
+  color: #a94438;
+  stroke: #a94438;
+  stroke-dasharray: 10 4;
+}
+
+.wire.signal {
+  color: #c2882f;
+  stroke: #c2882f;
+  stroke-width: 3;
+}
+
+.wire.spi-bus,
+.wire.spi-drop {
+  stroke: #557f92;
+}
+
+.wire.spi-drop {
+  stroke-width: 2;
+}
+
+.controller-board {
+  fill: #334044;
+  stroke: #1d2528;
+  stroke-width: 2;
+}
+
+.board-kicker {
+  fill: #d9a07b;
+}
+
+.board-title {
+  fill: #ffffff;
+  font-family: Bahnschrift, "DIN 2014", sans-serif !important;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.driver-row rect {
+  fill: #edf0ef;
+  stroke: #8f9899;
+}
+
+.driver-row.active rect {
+  fill: #f1d6c8;
+  stroke: #bc4d1d;
+  stroke-width: 2;
+}
+
+.driver-slot,
+.driver-joint {
+  fill: #273033;
+  font-family: Bahnschrift, "DIN 2014", sans-serif !important;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.driver-joint {
+  fill: #a94418;
+}
+
+.driver-pins {
+  fill: #515b5e;
+  font-size: 11px;
+}
+
+.terminal {
+  stroke: #ffffff;
+  stroke-width: 1;
+}
+
+.phase-a-plus { fill: #292d30; }
+.phase-a-minus { fill: #618454; }
+.phase-b-minus { fill: #527f9e; }
+.phase-b-plus { fill: #b44e43; }
+
+.wire.motor-cable {
+  stroke: #9ca4a5;
+  stroke-width: 3;
+}
+
+.wire.motor-cable.active {
+  stroke: #c45122;
+  stroke-width: 6;
+}
+
+.motor-node rect {
+  fill: #f3f5f3;
+  stroke: #899294;
+}
+
+.motor-node circle,
+.motor-node path {
+  fill: none;
+  stroke: #586265;
+  stroke-width: 2;
+}
+
+.motor-node.active rect {
+  fill: #f1d6c8;
+  stroke: #bc4d1d;
+  stroke-width: 2;
+}
+
+.motor-node.active circle,
+.motor-node.active path {
+  stroke: #a94418;
+}
+
+.motor-node-title {
+  fill: #242a2c;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.motor-node-copy {
+  fill: #657073;
+  font-size: 11px;
+}
+
+.diagram-footnote {
+  font-style: italic;
+}
+
+.column-heading {
+  fill: #6f797b;
+}
+
+.sensor-row .row-backdrop {
+  fill: #f5f6f4;
+  stroke: #ccd1d0;
+}
+
+.sensor-row.active .row-backdrop {
+  fill: #f4e2d8;
+  stroke: #bd572e;
+  stroke-width: 2;
+}
+
+.joint-badge {
+  fill: #303a3d;
+}
+
+.sensor-row.active .joint-badge {
+  fill: #b9491c;
+}
+
+.joint-badge-label {
+  fill: #ffffff;
+  font-family: Bahnschrift, "DIN 2014", sans-serif !important;
+  font-size: 14px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.sensor-title,
+.interface-title,
+.stop-title,
+.state-label {
+  fill: #293134;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sensor-copy,
+.interface-copy,
+.stop-copy,
+.state-copy {
+  fill: #6b7476;
+  font-size: 11px;
+}
+
+.wire.sensor-24 {
+  color: #c4562c;
+  stroke: #c4562c;
+}
+
+.interface-box {
+  stroke-width: 1.5;
+}
+
+.interface-box.isolated {
+  fill: #e0e8d8;
+  stroke: #758a62;
+}
+
+.interface-box.switch {
+  fill: #e1e6e8;
+  stroke: #65808c;
+}
+
+.stop-box {
+  fill: #dce7eb;
+  stroke: #547d8d;
+}
+
+.diagram-warning-box {
+  fill: #f1d9cb;
+  stroke: #b65b36;
+}
+
+.diagram-warning-text {
+  fill: #7c321d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.arm-silhouette {
+  fill: none;
+  stroke: #aeb5b6;
+  stroke-width: 78;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arm-joint {
+  fill: #e4e7e6;
+  stroke: #7f898b;
+  stroke-width: 3;
+}
+
+.arm-label {
+  fill: #3d474a;
+  font-family: Bahnschrift, "DIN 2014", sans-serif !important;
+  font-size: 14px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.wire.harness-one {
+  stroke: #c4562c;
+  stroke-width: 6;
+}
+
+.wire.harness-two {
+  stroke: #5d8395;
+  stroke-width: 6;
+}
+
+.wire.can-pair {
+  stroke: #46788e;
+  stroke-width: 3;
+  stroke-dasharray: 7 4;
+}
+
+.harness-legend.one { fill: #b84d22; }
+.harness-legend.two,
+.harness-legend.can { fill: #46788e; }
+
+.wiring-table-section,
+.harness-schedule,
+.wiring-verification {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line-dark);
+  background: var(--surface-strong);
+}
+
+.wiring-section-heading {
+  align-items: center;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.wiring-section-heading h3 {
+  font-size: 0.88rem;
+}
+
+.wiring-section-heading svg {
+  color: var(--orange-dark);
+}
+
+.wiring-table-scroll {
+  overflow: auto;
+  margin-top: 0.55rem;
+}
+
+.wiring-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  font-size: 0.61rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.wiring-table.compact {
+  min-width: 680px;
+}
+
+.wiring-table th,
+.wiring-table td {
+  padding: 0.45rem 0.5rem;
+  border: 1px solid #d6dad9;
+  text-align: left;
+  vertical-align: top;
+}
+
+.wiring-table thead th {
+  color: #ffffff;
+  border-color: #4e585a;
+  background: #343d40;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+}
+
+.wiring-table tbody th {
+  background: #eef0ef;
+}
+
+.wiring-table tbody tr.active th,
+.wiring-table tbody tr.active td {
+  background: #f4e2d8;
+}
+
+.wiring-table th button {
+  min-height: 28px;
+  padding: 0 0.45rem;
+  color: #ffffff;
+  border-color: var(--orange-dark);
+  background: var(--orange-dark);
+  font-size: 0.6rem;
+  font-weight: 800;
+}
+
+.wiring-table td small {
+  display: block;
+  margin-top: 0.12rem;
+  color: var(--graphite-faint);
+  font-size: 0.54rem;
+  line-height: 1.3;
+}
+
+.harness-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-top: 0.55rem;
+}
+
+.harness-cards article {
+  border: 1px solid var(--line);
+}
+
+.harness-cards article > span {
+  display: block;
+  padding: 0.42rem 0.55rem;
+  color: #ffffff;
+  background: #3b4649;
+  font-size: 0.66rem;
+  font-weight: 800;
+}
+
+.harness-cards dl {
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+}
+
+.harness-cards dl div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.45rem;
+  padding: 0.24rem 0;
+  border-bottom: 1px solid #e0e3e2;
+  font-size: 0.62rem;
+}
+
+.harness-cards dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.harness-cards p {
+  margin: 0;
+  padding: 0.5rem 0.55rem;
+  color: var(--graphite-faint);
+  border-top: 1px solid var(--line);
+  font-size: 0.6rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.wiring-verification ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.38rem;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wiring-verification li {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  border: 1px solid var(--line);
+}
+
+.wiring-verification li > span {
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #4a5558;
+  font-family: Bahnschrift, "DIN 2014", sans-serif;
+  font-size: 0.65rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.wiring-verification p {
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  color: var(--graphite-soft);
+  font-size: 0.61rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.wiring-reference > section {
+  min-width: 0;
+  padding: 0.7rem;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+}
+
+.wire-legend {
+  display: grid;
+  margin-top: 0.45rem;
+}
+
+.wire-legend > div {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #e0e3e2;
+}
+
+.wire-legend i {
+  width: 1.1rem;
+  height: 0.28rem;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.wire-legend span {
+  min-width: 0;
+  display: grid;
+  gap: 0.05rem;
+}
+
+.wire-legend strong {
+  font-size: 0.62rem;
+}
+
+.wire-legend small {
+  color: var(--graphite-faint);
+  font-size: 0.53rem;
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+
+.wiring-reference .integration-note {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem;
+  color: #6d2d1c;
+  border-color: #c27b5c;
+  background: #f2ddd2;
+}
+
+.integration-note strong {
+  font-size: 0.65rem;
+}
+
+.integration-note p {
+  margin: 0.25rem 0 0;
+  font-size: 0.58rem;
+  line-height: 1.42;
+  text-wrap: pretty;
+}
+
+.wiring-sources {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+}
+
+.wiring-sources a {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  color: var(--graphite);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.wiring-sources a:hover {
+  border-color: var(--orange);
+}
+
+.wiring-sources span {
+  min-width: 0;
+  display: grid;
+  gap: 0.08rem;
+}
+
+.wiring-sources strong {
+  font-size: 0.6rem;
+}
+
+.wiring-sources small {
+  color: var(--graphite-faint);
+  font-size: 0.52rem;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+
+.design-assumptions {
+  border-top: 3px solid #b84c20 !important;
+}
+
+.design-assumptions > span {
+  color: var(--orange-dark);
+}
+
+.design-assumptions ul {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.45rem 0 0;
+  padding-left: 1rem;
+}
+
+.design-assumptions li {
+  color: var(--graphite-soft);
+  font-size: 0.58rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+@media print {
+  .topbar,
+  .wiring-index,
+  .wiring-reference,
+  .wiring-print,
+  .board-pinmap-reference:not([open]) {
+    display: none !important;
+  }
+
+  .app-shell,
+  .wiring-page {
+    height: auto;
+    overflow: visible;
+    background: #ffffff;
+  }
+
+  .wiring-page {
+    padding: 0;
+  }
+
+  .wiring-layout {
+    display: block;
+    border: 0;
+  }
+
+  .wiring-main {
+    padding: 0;
+    border: 0;
+    background: #ffffff;
+  }
+
+  .diagram-canvas,
+  .wiring-table-section,
+  .harness-schedule,
+  .wiring-verification {
+    break-inside: avoid;
+  }
+}
+
 @media (max-width: 1180px) {
+  .app-shell {
+    height: auto;
+  }
+
   .topbar {
     grid-template-columns: 1fr auto;
   }
@@ -1459,6 +3354,7 @@ input[type="range"] {
   .workspace {
     height: auto;
     min-height: calc(100dvh - 74px);
+    grid-template-rows: auto;
   }
 
   .simulation-grid,
@@ -1497,6 +3393,24 @@ input[type="range"] {
 
   .telemetry-panel .model-heading {
     margin-top: 1rem;
+  }
+
+  .wiring-hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .wiring-hero-facts {
+    grid-column: 1 / -1;
+  }
+
+  .wiring-layout {
+    grid-template-columns: minmax(210px, 240px) minmax(0, 1fr);
+  }
+
+  .wiring-reference {
+    position: static;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -1557,6 +3471,74 @@ input[type="range"] {
     max-height: 16rem;
     overflow: auto;
   }
+
+  .wiring-page {
+    padding: 0.55rem;
+  }
+
+  .wiring-hero {
+    grid-template-columns: 1fr;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .wiring-hero-facts,
+  .wiring-print {
+    grid-column: 1;
+  }
+
+  .wiring-print {
+    width: 100%;
+  }
+
+  .wiring-safety-banner > div {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .wiring-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wiring-index,
+  .wiring-reference {
+    position: static;
+  }
+
+  .wiring-main {
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wiring-reference {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+  }
+
+  .wiring-sheet-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wiring-verification ol,
+  .harness-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hardware-visual-sequence {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .board-anatomy > header {
+    grid-template-columns: 1fr;
+  }
+
+  .board-status-key {
+    justify-content: flex-start;
+  }
+
+  .board-anatomy-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 430px) {
@@ -1607,6 +3589,66 @@ input[type="range"] {
   .main-stage,
   .part-stage {
     min-height: 430px;
+  }
+
+  .wiring-hero-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wiring-hero-facts div:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid #4c5558;
+  }
+
+  .wiring-hero-facts div:nth-child(4) {
+    border-top: 1px solid #4c5558;
+  }
+
+  .wiring-sheet-list {
+    grid-template-columns: 1fr;
+  }
+
+  .drawing-header {
+    align-items: flex-start;
+  }
+
+  .drawing-id {
+    grid-template-columns: 1fr;
+  }
+
+  .hardware-visual-sequence {
+    grid-template-columns: 1fr;
+  }
+
+  .hardware-visual-sequence figure {
+    grid-template-rows: 170px minmax(0, 1fr);
+  }
+
+  .board-pinmap-reference summary {
+    grid-template-columns: 1fr;
+  }
+
+  .board-pinmap-reference summary > span:last-child {
+    justify-self: start;
+  }
+
+  .board-anatomy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .board-anatomy-grid article > header {
+    grid-template-columns: 0.65rem minmax(0, 1fr);
+  }
+
+  .board-use-status {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .wiring-main,
+  .wiring-index,
+  .wiring-reference {
+    padding: 0.6rem;
   }
 }
 

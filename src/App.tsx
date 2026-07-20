@@ -16,6 +16,7 @@ import {
   Home,
   Info,
   ListChecks,
+  ListTree,
   LocateFixed,
   MousePointer2,
   Move3D,
@@ -31,6 +32,8 @@ import {
 } from 'lucide-react';
 import { PartViewport } from './PartViewport';
 import { RobotViewport } from './RobotViewport';
+import { WiringPage } from './WiringPage';
+import { assemblyBreakdowns, printableComponentCount } from './assemblyData';
 import { clampJoint, formatMillimeters, interpolatePose } from './kinematics';
 import { homePose, jointLimits, jointOrder, modelFacts, partCatalog, scriptedPoses } from './robotData';
 import { assemblyGuideSteps, diagnosticScenarios } from './serviceData';
@@ -56,12 +59,19 @@ function axisValue(value: number) {
   return `${rounded.toFixed(1)}°`;
 }
 
+function initialTab(): TabId {
+  const requested = new URLSearchParams(window.location.search).get('tab');
+  return requested === 'parts' || requested === 'wiring' ? requested : 'simulation';
+}
+
 export function App() {
-  const [tab, setTab] = useState<TabId>('simulation');
+  const [tab, setTab] = useState<TabId>(initialTab);
   const [joints, setJoints] = useState<JointState>(homePose);
   const [selectedPartId, setSelectedPartId] = useState<PartId>('link2');
   const [partCategory, setPartCategory] = useState<PartCategory>('mechanical');
   const [partSearch, setPartSearch] = useState('');
+  const [partExplodedProgress, setPartExplodedProgress] = useState(0);
+  const [selectedComponentId, setSelectedComponentId] = useState<string | null>(null);
   const [showEnvelope, setShowEnvelope] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('solid');
   const [isPlaying, setIsPlaying] = useState(false);
@@ -89,10 +99,20 @@ export function App() {
     () => partCatalog.find((part) => part.id === selectedPartId) ?? partCatalog[0],
     [selectedPartId]
   );
+  const selectedBreakdown = assemblyBreakdowns[selectedPartId as keyof typeof assemblyBreakdowns];
+  const selectedComponent = selectedBreakdown?.components.find((component) => component.id === selectedComponentId) ?? null;
+  const displayedHardware = selectedBreakdown?.hardware.filter((item) => !selectedComponent || selectedComponent.hardwareIds.includes(item.id)) ?? [];
   const visibleParts = useMemo(
     () => {
       const query = partSearch.trim().toLowerCase();
-      return partCatalog.filter((part) => part.category === partCategory && (!query || [part.name, part.assemblyRole, part.sourceFile, part.summary].some((value) => value.toLowerCase().includes(query))));
+      return partCatalog.filter((part) => {
+        if (part.category !== partCategory) return false;
+        const breakdown = assemblyBreakdowns[part.id as keyof typeof assemblyBreakdowns];
+        const breakdownTerms = breakdown
+          ? [...breakdown.components.flatMap((component) => [component.name, component.sourceFile]), ...breakdown.hardware.flatMap((item) => [item.name, item.specification])]
+          : [];
+        return !query || [part.name, part.assemblyRole, part.sourceFile, part.summary, ...breakdownTerms].some((value) => value.toLowerCase().includes(query));
+      });
     },
     [partCategory, partSearch]
   );
@@ -249,9 +269,14 @@ export function App() {
 
   const exportBom = () => {
     const quote = (value: string | number | undefined) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+    const assemblyRows = Object.values(assemblyBreakdowns).flatMap((assembly) => [
+      ...assembly.components.map((component) => ['Printed STL', assembly.label, component.name, component.description, 1, component.sourceFile, `Manual pages ${component.manualPages}`]),
+      ...assembly.hardware.map((item) => ['Hardware', assembly.label, item.name, item.specification, item.quantity, '', item.note ?? ''])
+    ]);
     const rows = [
-      ['Category', 'Part', 'Role', 'Quantity', 'Dimensions mm', 'Mass kg', 'Planning cost', 'Source file'],
-      ...partCatalog.map((part) => [part.category, part.name, part.assemblyRole, part.quantity, part.dimensionsMm.join(' x '), part.massKg, part.priceCad, part.sourceFile])
+      ['Type', 'Assembly', 'Part', 'Role / specification', 'Quantity', 'Source file', 'Reference note'],
+      ...partCatalog.map((part) => ['Catalog assembly', part.assemblyRole, part.name, part.summary, part.quantity, part.sourceFile, part.priceCad ?? '']),
+      ...assemblyRows
     ];
     const csv = rows.map((row) => row.map(quote).join(',')).join('\r\n');
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
@@ -287,7 +312,17 @@ export function App() {
     setPartCategory(category);
     setPartSearch('');
     const firstPart = partCatalog.find((part) => part.category === category);
-    if (firstPart) setSelectedPartId(firstPart.id);
+    if (firstPart) {
+      setSelectedPartId(firstPart.id);
+      setPartExplodedProgress(0);
+      setSelectedComponentId(null);
+    }
+  };
+
+  const selectCatalogPart = (partId: PartId) => {
+    setSelectedPartId(partId);
+    setPartExplodedProgress(0);
+    setSelectedComponentId(null);
   };
 
   const modelProvenance = selectedPart.modelType === 'glb'
@@ -316,11 +351,15 @@ export function App() {
             <Boxes size={17} />
             Parts
           </button>
+          <button className={tab === 'wiring' ? 'active' : ''} onClick={() => setTab('wiring')}>
+            <Cable size={17} />
+            Wiring
+          </button>
         </nav>
 
         <div className="source-status">
           <CircleDot size={15} />
-          <span>{tab === 'simulation' ? 'Official URDF geometry' : 'Mechanical + electronics BOM'}</span>
+          <span>{tab === 'simulation' ? 'Official URDF geometry' : tab === 'parts' ? 'Mechanical + electronics BOM' : 'Octopus Pro electrical dossier'}</span>
         </div>
       </header>
 
@@ -695,7 +734,7 @@ export function App() {
             </dl>
           </aside>
         </section>
-      ) : (
+      ) : tab === 'parts' ? (
         <section className="workspace parts-grid">
           <aside className="tool-panel parts-list">
             <div className="panel-heading">
@@ -734,14 +773,14 @@ export function App() {
             </div>
             <div className="catalog-summary">
               <span>{visibleParts.length} items shown</span>
-              <span>{visibleParts.reduce((total, part) => total + part.quantity, 0)} units</span>
+              <span>{partCategory === 'mechanical' ? `${printableComponentCount} print files` : `${visibleParts.reduce((total, part) => total + part.quantity, 0)} units`}</span>
             </div>
             <div className="part-rows">
               {visibleParts.map((part, index) => (
                 <button
                   key={part.id}
                   className={part.id === selectedPartId ? 'part-row active' : 'part-row'}
-                  onClick={() => setSelectedPartId(part.id)}
+                  onClick={() => selectCatalogPart(part.id)}
                 >
                   <span className="part-index">{String(index).padStart(2, '0')}</span>
                   <span>
@@ -750,7 +789,7 @@ export function App() {
                   </span>
                   <span className="part-row-meta">
                     {part.category === 'electronics' ? <CircuitBoard size={15} /> : <Box size={15} />}
-                    <small>x{part.quantity}</small>
+                    <small>{assemblyBreakdowns[part.id as keyof typeof assemblyBreakdowns]?.components.length ?? `x${part.quantity}`} {part.category === 'mechanical' ? 'STL' : ''}</small>
                   </span>
                 </button>
               ))}
@@ -765,10 +804,15 @@ export function App() {
           </aside>
 
           <section className="part-stage" aria-label={`${selectedPart.name} three-dimensional model`}>
-            <PartViewport partId={selectedPartId} viewMode={viewMode} />
+            <PartViewport
+              partId={selectedPartId}
+              viewMode={viewMode}
+              explodedProgress={partExplodedProgress / 100}
+              selectedComponentId={selectedComponentId}
+            />
             <div className="stage-label">
-              <strong>{selectedPart.sourceFile}</strong>
-              <span>{modelProvenance}</span>
+              <strong>{selectedComponent?.sourceFile ?? selectedPart.sourceFile}</strong>
+              <span>{selectedBreakdown ? `${selectedBreakdown.components.length} official print files + ${selectedBreakdown.hardware.length} hardware groups` : modelProvenance}</span>
             </div>
             <div className="stage-toolbar" aria-label="Part display">
               <button
@@ -788,12 +832,109 @@ export function App() {
                 <Rotate3D size={17} />
               </button>
             </div>
+            {selectedBreakdown ? (
+              <><div className="part-explode-control">
+                <div>
+                  <span>Assembly separation</span>
+                  <strong>{partExplodedProgress === 0 ? 'Assembled' : partExplodedProgress === 100 ? 'Fully disassembled' : `${partExplodedProgress}% separated`}</strong>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={partExplodedProgress}
+                  onChange={(event) => setPartExplodedProgress(Number(event.target.value))}
+                  aria-label="Assembly separation"
+                />
+                <div className="explode-presets">
+                  <button className={partExplodedProgress === 0 ? 'active' : ''} onClick={() => setPartExplodedProgress(0)}>Assembled</button>
+                  <button className={partExplodedProgress === 100 ? 'active' : ''} onClick={() => setPartExplodedProgress(100)}>Exploded</button>
+                </div>
+              </div>
+              <div className="part-color-key" aria-label="Diagram color key">
+                <span><i className="structure" />Structure</span>
+                <span><i className="cover" />Covers</span>
+                <span><i className="drive" />Drive parts</span>
+                <span><i className="fixture" />Fixtures</span>
+                <span><i className="hardware" />Hardware</span>
+              </div></>
+            ) : null}
           </section>
 
           <aside className="tool-panel part-detail">
             <div className="detail-kicker">{selectedPart.assemblyRole}</div>
             <h2>{selectedPart.name}</h2>
             <p>{selectedPart.summary}</p>
+
+            {selectedBreakdown ? (
+              <div className="assembly-breakdown">
+                <div className="breakdown-stats" aria-label="Assembly breakdown summary">
+                  <span><b>{selectedBreakdown.components.length}</b> print files</span>
+                  <span><b>{selectedBreakdown.hardware.length}</b> hardware lines</span>
+                  <span><b>{selectedBreakdown.buildOrder}</b> build order</span>
+                </div>
+                <div className="manual-reference">
+                  <ListTree size={17} aria-hidden="true" />
+                  <span><b>{selectedBreakdown.manualSection}</b>Manual pages {selectedBreakdown.manualPages}</span>
+                </div>
+                <p className="assembly-note">{selectedBreakdown.note}</p>
+
+                <section className="component-breakdown" aria-labelledby="printed-components-heading">
+                  <div className="breakdown-heading">
+                    <div>
+                      <span>Exploded structure</span>
+                      <h3 id="printed-components-heading">Printed components</h3>
+                    </div>
+                    {selectedComponent ? <button onClick={() => setSelectedComponentId(null)}>Show all</button> : null}
+                  </div>
+                  <div className="component-list">
+                    {selectedBreakdown.components.map((component) => {
+                      const componentHardware = selectedBreakdown.hardware.filter((item) => component.hardwareIds.includes(item.id));
+                      const isSelected = component.id === selectedComponentId;
+                      return (
+                        <button
+                          key={component.id}
+                          className={isSelected ? 'component-row active' : 'component-row'}
+                          onClick={() => {
+                            setSelectedComponentId(isSelected ? null : component.id);
+                            setPartExplodedProgress(100);
+                          }}
+                          aria-pressed={isSelected}
+                        >
+                          <span className="component-step">{String(component.step).padStart(2, '0')}</span>
+                          <span className="component-copy">
+                            <strong>{component.name}{component.optional ? <em>Optional</em> : null}</strong>
+                            <small>{component.sourceFile}</small>
+                            <small className="component-hardware-summary">
+                              {componentHardware.length ? componentHardware.map((item) => `${item.name} ×${item.quantity}`).join(' · ') : 'No separate hardware specified'}
+                            </small>
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+
+                <section className="hardware-breakdown" aria-labelledby="hardware-heading">
+                  <div className="breakdown-heading">
+                    <div>
+                      <span>{selectedComponent ? 'Selected component' : 'Complete subassembly'}</span>
+                      <h3 id="hardware-heading">Required hardware</h3>
+                    </div>
+                    <b>{displayedHardware.reduce((total, item) => total + item.quantity, 0)} pcs</b>
+                  </div>
+                  <div className="hardware-list">
+                    {displayedHardware.map((item) => (
+                      <div className="hardware-row" key={item.id}>
+                        <CircleDot size={14} aria-hidden="true" />
+                        <span><strong>{item.name}</strong><small>{item.specification}</small>{item.note ? <small className="hardware-note">{item.note}</small> : null}</span>
+                        <b>×{item.quantity}</b>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </div>
+            ) : null}
 
             <dl className="detail-list">
               <div>
@@ -839,13 +980,19 @@ export function App() {
               <p>{selectedPart.buildNote}</p>
             </div>
 
-            <a className="source-link" href={selectedPart.sourceUrl} target="_blank" rel="noreferrer">
-              Open source reference
+            <a className="source-link" href={selectedComponent?.sourceUrl ?? selectedPart.sourceUrl} target="_blank" rel="noreferrer">
+              {selectedComponent ? 'Download selected STL' : 'Open source reference'}
               <ExternalLink size={16} />
             </a>
+            {selectedBreakdown ? (
+              <a className="source-link secondary-source" href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/Building%20instructions/Parol%20building%20instructions.pdf" target="_blank" rel="noreferrer">
+                Open assembly manual
+                <ExternalLink size={16} />
+              </a>
+            ) : null}
           </aside>
         </section>
-      )}
+      ) : <WiringPage />}
     </main>
   );
 }

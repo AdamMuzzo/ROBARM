@@ -77,8 +77,15 @@ await page.getByRole('button', { name: 'Parts' }).click();
 await page.waitForSelector('.part-viewport[data-model-status="ready"]', { timeout: 30_000 });
 await expectPaintedCanvas(page, '.part-viewport canvas', 'Part');
 await page.screenshot({ path: 'artifacts/simulator-parts.png', fullPage: true });
+await page.getByRole('button', { name: 'Exploded', exact: true }).click();
+await page.waitForTimeout(700);
+await expectPaintedCanvas(page, '.part-viewport canvas', 'Exploded part');
+await page.screenshot({ path: 'artifacts/simulator-parts-components.png', fullPage: true });
+await page.getByRole('button', { name: /Upper arm.*Upper_arm\.STL/i }).click();
+await page.waitForTimeout(250);
+await page.screenshot({ path: 'artifacts/simulator-parts-component-selected.png', fullPage: true });
 
-await page.getByRole('button', { name: /J6 tool flange/i }).click();
+await page.getByRole('button', { name: /J6 tool attachments/i }).click();
 await page.waitForSelector('.part-viewport[data-model-status="ready"]', { timeout: 30_000 });
 await page.getByRole('button', { name: 'Show X-ray model' }).click();
 await page.waitForSelector('.part-viewport[data-model-status="ready"]', { timeout: 30_000 });
