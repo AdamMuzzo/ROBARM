@@ -41,6 +41,21 @@ flowchart LR
 - The computer should command poses, jogs, and trajectories over USB.
 - The controller should own step timing, homing, limit switches, emergency-stop handling, and driver enable/disable.
 
+## J5 Tool Connector Wiring
+
+The M8 4-pin electric gripper/tool connector mounted in the J5 electronics lid is being wired as a CAN + 24V tool connector.
+
+Use this project-specific colour convention:
+
+| Connector label | Wire colour |
+|---|---|
+| GND | Green |
+| CANH | Blue |
+| CANL | Yellow |
+| 24V | Black |
+
+Keep CANH and CANL as a twisted pair where possible. The 24V line should come from a fused tool-power feed, not an Octopus logic/header pin.
+
 ## Simulator Parts Catalog
 
 The simulator's Parts view has a dedicated Electronics tab containing the controller, six drivers, six motors across three body lengths, three planetary gearboxes, power supply, cooling fan, limit switches, inductive sensors, and emergency stop. Quantities follow `docs/BOM.md`, and every entry includes dimensions, planning data, a source reference, and a standalone 3D inspection model.

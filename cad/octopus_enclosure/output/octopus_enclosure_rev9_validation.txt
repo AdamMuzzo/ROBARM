@@ -1,0 +1,39 @@
+Octopus enclosure Rev9 validation
+==================================
+
+Rev9 main case lid
+------------------
+Plan footprint: 126.0 x 206.0 mm
+Print-orientation height: 10.8 mm
+Assembled top height: 59.8 mm
+M3 screw centre height: Z=51.0 mm
+Skirt bottom height: Z=49.0 mm
+Skirt extension past screw centre: 2.0 mm
+Tray/lid intersection volume: 0.000000000 mm^3
+All four lid pilots passed centre-void and surrounding-material checks.
+
+Rev9 widened adapter
+--------------------
+Overall bounds: 126.0 x 50.5 x 59.8 mm
+Enclosure-facing body width: 126.0 mm
+Preserved base-interface width: 109.0 mm
+Base-mating geometry below the new top recess:
+  old minus new = 0.000000000 mm^3
+  new minus old = 0.000000000 mm^3
+
+Rev9 full adapter cover
+-----------------------
+Print-orientation bounds: 125.4 x 49.9 x 20.0 mm
+The cover footprint includes the central opening and rounded base-side areas.
+Assembled top height: 59.8 mm
+Adapter/cover intersection volume: 0.000000000 mm^3
+Four supported M3 pilot locations: Y=34.0 mm, Z=43.0 and 55.0 mm,
+on both adapter sides.
+
+Mesh checks
+-----------
+Tray: watertight, winding-consistent, one connected component
+Main case lid: watertight, winding-consistent, one connected component
+Adapter: watertight, winding-consistent, one connected component
+Adapter cover: watertight, winding-consistent, one connected component
+Tray/adapter assembled intersection volume: 0.000000000 mm^3

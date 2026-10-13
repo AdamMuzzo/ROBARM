@@ -1,0 +1,43 @@
+Octopus enclosure Rev12 validation
+===================================
+
+Base-connection clearance
+-------------------------
+Base-connection zone begins: Y=38.00 mm
+Adapter lid ends: Y=37.70 mm
+Verified clearance before base zone: 0.30 mm
+Lid geometry above base-connection zone: none
+Lid recess above base-connection zone: none
+
+Complete Y=38.01..50.50 mm base-zone comparison against the preserved
+pre-recess official-interface adapter:
+  old minus new = 0.000000000 mm^3
+  new minus old = 0.000000000 mm^3
+
+Rev12 adapter lid
+-----------------
+Assembly-oriented file:
+  parol6_octopus_interface_adapter_lid_rev12.stl
+Support-free printing file:
+  parol6_octopus_interface_adapter_lid_rev12_print_orientation.stl
+Footprint: 125.4 x 37.4 mm
+Assembly bounds:
+  X=0.30..125.70 mm
+  Y=0.30..37.70 mm
+  Z=39.80..59.80 mm
+Adapter/lid intersection volume: 0.000000000 mm^3
+Assembled top height: 59.8 mm
+
+Mesh and orientation checks
+---------------------------
+Adapter: watertight, winding-consistent, one connected component
+Assembly-oriented lid: watertight, winding-consistent, one component
+Print-oriented lid: watertight, winding-consistent, one component
+Geometry difference after reversing print orientation:
+  assembly minus restored print copy = 0.000000000 mm^3
+  restored print copy minus assembly = 0.000000000 mm^3
+
+Companion parts
+---------------
+Main tray: octopus_enclosure_tray_rev6.stl
+Main shortened lid: octopus_enclosure_fan_lid_rev9.stl

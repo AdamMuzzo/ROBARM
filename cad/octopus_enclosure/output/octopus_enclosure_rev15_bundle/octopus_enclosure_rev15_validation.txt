@@ -1,0 +1,49 @@
+Octopus enclosure Rev15 validation
+===================================
+
+Continuous inward bridge
+-------------------------
+Bridge bounds:
+  X=21.50..95.50 mm
+  Y=37.70..50.20 mm
+  Z=56.80..59.80 mm
+Expected solid bridge volume: 2775.000000 mm^3
+Measured lid intersection with bridge volume: 2775.000000 mm^3
+Missing bridge volume: 0.000000000 mm^3
+Base-facing end clearance: 0.30 mm
+
+Connection-surface clearance
+----------------------------
+Lid volume over left four-hole rail, X=8.5..21.2: 0.000000000 mm^3
+Lid volume over right four-hole rail, X=95.8..117.5: 0.000000000 mm^3
+Lid volume outward of left rail, X=0.0..8.5: 0.000000000 mm^3
+Lid volume outward of right rail, X=117.5..126.0: 0.000000000 mm^3
+Lid volume past Y=50.20: 0.000000000 mm^3
+
+The Rev15 adapter restores both original rail bodies exactly:
+Left rail old-minus-new/new-minus-old: 0.000000000 / 0.000000000 mm^3
+Right rail old-minus-new/new-minus-old: 0.000000000 / 0.000000000 mm^3
+
+Fit and orientation
+-------------------
+Assembly-oriented lid bounds:
+  X=0.30..125.70 mm
+  Y=0.30..50.20 mm
+  Z=39.80..59.80 mm
+Adapter/lid intersection volume: 0.000000000 mm^3
+Assembled top height: 59.8 mm
+Assembly and print-orientation geometry difference: 0.000000000 mm^3
+
+Files
+-----
+Adapter: parol6_octopus_interface_adapter_rev15.stl
+Assembly-oriented lid:
+  parol6_octopus_interface_adapter_lid_rev15.stl
+Support-free printing lid:
+  parol6_octopus_interface_adapter_lid_rev15_print_orientation.stl
+
+Mesh checks
+-----------
+Adapter: watertight, winding-consistent, one connected component
+Assembly-oriented lid: watertight, winding-consistent, one component
+Print-oriented lid: watertight, winding-consistent, one component

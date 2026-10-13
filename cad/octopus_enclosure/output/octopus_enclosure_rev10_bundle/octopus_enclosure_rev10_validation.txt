@@ -1,0 +1,35 @@
+Octopus enclosure Rev10 validation
+===================================
+
+Rev10 straight adapter cover
+----------------------------
+Geometry: two sharp-cornered rectangular sections with one straight step
+Print-orientation bounds: 125.4 x 49.9 x 20.0 mm
+Assembled bounds: X=0.30..125.70, Y=0.30..50.20, Z=39.80..59.80 mm
+Base-facing edge clearance: 0.30 mm
+Left exterior edge clearance: 0.30 mm
+Right exterior edge clearance: 0.30 mm
+Rounded outline features: none
+Adapter/cover intersection volume: 0.000000000 mm^3
+Assembled top height: 59.8 mm
+
+Rev10 widened adapter
+---------------------
+Overall bounds: 126.0 x 50.5 x 59.8 mm
+Enclosure-facing body width: 126.0 mm
+Preserved base-interface width: 109.0 mm
+Four supported lid M3 pilot locations: Y=34.0 mm, Z=43.0 and 55.0 mm,
+on both adapter sides.
+
+Unchanged current companion parts
+---------------------------------
+Tray: Rev6
+Main case lid: Rev9 shortened-skirt version
+Main lid skirts extend exactly 2.0 mm past their screw centres.
+
+Mesh checks
+-----------
+Adapter: watertight, winding-consistent, one connected component
+Adapter cover: watertight, winding-consistent, one connected component
+Adapter/cover intersection volume: 0.000000000 mm^3
+Tray/adapter assembled intersection volume: 0.000000000 mm^3

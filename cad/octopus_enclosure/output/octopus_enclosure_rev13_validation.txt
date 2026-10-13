@@ -1,0 +1,45 @@
+Octopus enclosure Rev13 validation
+===================================
+
+Rear rail fingers
+-----------------
+Left base-side rail finger:
+  X=8.80..20.90 mm
+  Y=37.70..50.20 mm
+Right base-side rail finger:
+  X=96.10..117.20 mm
+  Y=37.70..50.20 mm
+Base-facing end clearance: 0.30 mm
+
+Forbidden-volume Boolean checks
+-------------------------------
+Lid volume in central base opening, X=21.2..95.8: 0.000000000 mm^3
+Lid volume outward of left rail, X=0.0..8.5: 0.000000000 mm^3
+Lid volume outward of right rail, X=117.5..126.0: 0.000000000 mm^3
+Lid volume past Y=50.20: 0.000000000 mm^3
+
+The Rev13 adapter has matching top recesses only under the two fingers.
+The central base area has zero geometric difference from the preserved
+pre-recess interface:
+  old minus new = 0.000000000 mm^3
+  new minus old = 0.000000000 mm^3
+
+Fit and orientation
+-------------------
+Assembly-oriented lid bounds:
+  X=0.30..125.70 mm
+  Y=0.30..50.20 mm
+  Z=39.80..59.80 mm
+Adapter/lid intersection volume: 0.000000000 mm^3
+Assembled top height: 59.8 mm
+
+Assembly-oriented file:
+  parol6_octopus_interface_adapter_lid_rev13.stl
+Support-free printing file:
+  parol6_octopus_interface_adapter_lid_rev13_print_orientation.stl
+
+Mesh checks
+-----------
+Adapter: watertight, winding-consistent, one connected component
+Assembly-oriented lid: watertight, winding-consistent, one component
+Print-oriented lid: watertight, winding-consistent, one component

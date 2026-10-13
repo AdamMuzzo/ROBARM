@@ -1,0 +1,34 @@
+Octopus enclosure Rev11 validation
+===================================
+
+Primary adapter lid STL
+-----------------------
+File: parol6_octopus_interface_adapter_lid_rev11.stl
+Orientation: assembly orientation
+Outer cover plate: Z=17.0..20.0 mm
+Retention tabs: extend downward toward Z=0.0 mm
+Assembled translation: X=0.3, Y=0.3, Z=39.8 mm
+Assembled top height: 59.8 mm
+Adapter/lid intersection volume: 0.000000000 mm^3
+
+Support-free printing copy
+--------------------------
+File: parol6_octopus_interface_adapter_lid_rev11_print_orientation.stl
+Orientation: broad outer cover face on Z=0.0
+Outer cover plate: Z=0.0..3.0 mm
+Retention tabs: extend upward toward Z=20.0 mm
+Flip the physical print over for assembly.
+
+Equivalence and mesh checks
+---------------------------
+Assembly-oriented lid: watertight, winding-consistent, one component
+Print-oriented lid: watertight, winding-consistent, one component
+Geometry difference after reversing print orientation:
+  assembly minus restored print copy = 0.000000000 mm^3
+  restored print copy minus assembly = 0.000000000 mm^3
+
+Companion parts
+---------------
+Adapter: parol6_octopus_interface_adapter_rev10.stl
+Main tray: octopus_enclosure_tray_rev6.stl
+Main shortened lid: octopus_enclosure_fan_lid_rev9.stl

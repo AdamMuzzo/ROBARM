@@ -1,0 +1,4 @@
+platformio==6.1.18
+pyserial==3.5
+pytest==8.4.1
+

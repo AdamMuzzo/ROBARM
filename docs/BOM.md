@@ -8,7 +8,7 @@ The thumbnails in the tables are visual references. For generic commodity items,
 
 ## Purchase Status
 
-Updated 2026-07-16. These parts have already been ordered and must not be purchased again unless a delivery problem or fit problem is found.
+Updated 2026-07-25. These parts have already been ordered and must not be purchased again unless a delivery problem or fit problem is found.
 
 | Status | Supplier | Part | Qty ordered | Order note |
 |---|---|---|---:|---|
@@ -19,6 +19,7 @@ Updated 2026-07-16. These parts have already been ordered and must not be purcha
 | **Ordered / waiting** | StepperOnline | <img src="images/bom/gearbox_20_1.jpg" width="72"><br>`EG17-G20`, 20:1 planetary gearbox | 2 | J1/J2 reduction |
 | **Ordered / waiting** | StepperOnline | <img src="images/bom/gearbox_10_1.jpg" width="72"><br>`EG17-G10`, 10:1 planetary gearbox | 1 | Lower-ratio reduction |
 | **Ordered / waiting** | Mean Well / marketplace | <img src="https://www.trcelectronics.com/cdn/shop/files/edr120_de169455-e495-4d6f-9d71-7e19901c3ff5_500x500.jpg?v=1702005529" width="72"><br>`EDR-120-24`, 24 V / 5 A / 120 W DIN-rail PSU | 1 | User listed the same PSU twice; tracked as one supply unless a second order is confirmed. |
+| **Arrived** | User-confirmed purchase | <img src="images/bom/fan.svg" width="72"><br>Noctua `NF-A4x20 5V` controller fan | 1 | Use for Octopus/controller-box cooling. |
 | **Ordered / waiting** | AliExpress | <img src="images/bom/flange_coupler.png" width="72"><br>Rigid flange shaft coupler, 8 mm bore | 3 | Covers all three shaft flange couplers. |
 | **Ordered / waiting** | AliExpress | <img src="images/bom/htd3m_belt.png" width="72"><br>HTD3M belt, 396 mm pitch length, 6 mm width, 132 teeth | 1 | Covers the J1 belt. |
 | **Ordered / waiting** | AliExpress | <img src="images/bom/htd3m_belt.png" width="72"><br>HTD3M belt, 342 mm pitch length, 6 mm width, 114 teeth | 1 | Covers the J3 belt. |
@@ -45,7 +46,7 @@ Updated 2026-07-16. These parts have already been ordered and must not be purcha
 | **Ordered / waiting** | Harfington | <img src="images/bom/axk3552.png" width="72"><br>`AXK3552` with `AS3552` washers | 1 pack | Covers the J1 thrust-bearing stack, with spares. |
 | **Ordered / waiting** | 123Bearing Canada | <img src="images/bom/tapered_bearing.png" width="72"><br>Generic `32907`, 35 x 55 x 14 mm tapered roller bearing set | 4 | Covers J1/J2 tapered-bearing quantity using the budget option. |
 
-**Recorded order coverage: all six motors, all three gearboxes, the PSU, controller board, all belts, all motor pulleys, all shaft couplers, all major bearings, E-stop, PG7 gland pack, heat-set inserts, homing sensors, arm connectors, M3 starter hardware and limit-switch pack.**
+**Recorded order coverage: all six motors, all three gearboxes, the PSU, controller board, controller fan, all belts, all motor pulleys, all shaft couplers, all major bearings, E-stop, PG7 gland pack, heat-set inserts, homing sensors, arm connectors, M3 starter hardware and limit-switch pack.**
 
 Controller caveat: the Octopus line must be checked when the parcel arrives. The documented ROBARM controller path needs **Octopus Pro V1.1 H723 plus eight TMC5160T Pro drivers**. A board-only order or TMC2209 bundle is not enough for the current BOM.
 
@@ -56,7 +57,6 @@ Known still-to-order items as of 2026-07-16:
 | Priority | Item | Qty | Purchase link | Notes |
 |---|---|---:|---|---|
 | Verify first | <img src="https://biqu.equipment/cdn/shop/files/TMC5160TProv1_8.jpg?v=1716050680" width="72"><br>TMC5160T Pro stepper drivers | 8 | [BIQU official](https://biqu.equipment/products/tmc5160-pro-v1-0) / [Amazon.ca 4-pack](https://www.amazon.ca/BIGTREETECH-TMC5160-Stepper-Ultra-Silent-Heatsink/dp/B0B3J39QQC) | Only order if the Octopus parcel does not include eight TMC5160T Pro drivers. |
-| High | <img src="images/bom/fan.svg" width="72"><br>Noctua `NF-A4x20 5V` fan | 1 | [Noctua product page](https://www.noctua.at/en/products/nf-a4x20-5v) | Use the 5 V version for the controller cooling plan. |
 | High | <img src="images/bom/ac_inlet.svg" width="72"><br>Fused AC inlet | 1 | [Amazon.ca search](https://www.amazon.ca/s?k=C14+fused+switch+inlet+5x20+UL) / [Qualtek reference](https://www.digikey.ca/en/products/detail/qualtek/723W-BEL3BR51A/23019209) | Certified switched/fused C14 inlet, 250 VAC / 10 A or higher, 5 x 20 mm fuse drawer. |
 | High | <img src="images/bom/ac_inlet.svg" width="72"><br>AC fuse and grounded C13 cord | 1 set | [Fuse search](https://www.amazon.ca/s?k=3.15A+time+delay+5x20mm+fuse) / [C13 cord search](https://www.amazon.ca/s?k=CSA+C13+power+cord) | 3.15 A time-delay 5 x 20 mm fuse; cord must be CSA/cUL/ETL listed. |
 | High | <img src="images/bom/fuse_holder.svg" width="72"><br>24 V output fuse holder and fuses | 1 set | [Amazon.ca search](https://www.amazon.ca/s?k=ATO+inline+fuse+holder+7.5A) / [Littelfuse reference](https://www.digikey.ca/en/products/detail/littelfuse-inc/028707-5U/3996914) | Inline ATO/ATC holder plus 7.5 A blade fuse and spares. |
@@ -83,7 +83,7 @@ Buy this batch first. It is enough to print fit checks and prove one motor, one 
 | <img src="https://biqu.equipment/cdn/shop/files/2_94b1a7cb-0fcc-4a96-b0f8-529d8ddf8abd.jpg?v=1716049502" width="72"><br>Lower-cost controller source | Select **Type: Octopus Pro V1.1 with Chip H723** and **Size: With 8 PCs TMC5160T Pro**; BIQU SKU `1020000432*1+1050000063*8`, ships from China | 1 kit | [BIQU preselected variant](https://biqu.equipment/products/bigtreetech-octopus-pro-v1-0-chip-f446?variant=40310085812322) | **~$255 converted** ($179.56 USD) |
 | <img src="https://www.trcelectronics.com/cdn/shop/files/edr120_de169455-e495-4d6f-9d71-7e19901c3ff5_500x500.jpg?v=1702005529" width="72"><br>24 V supply | Mean Well `EDR-120-24`, DigiKey `1866-1441-ND`, 24 V / 5 A / 120 W | 1 | [DigiKey Canada](https://www.digikey.ca/en/products/detail/mean-well-usa-inc/EDR-120-24/7702914) | **$39.20 actual** |
 | <img src="images/bom/stepper_40mm.jpg" width="72"><br>Bench-test motor | **Already ordered:** StepperOnline `17HS16-2004S1`, NEMA 17, 45 Ncm, 42 x 42 x 40 mm | 1 of the 3 ordered | [StepperOnline](https://www.omc-stepperonline.com/nema-17-bipolar-45ncm-64oz-in-2a-42x42x40mm-4-wires-w-1m-cable-connector-17hs16-2004s1) | $0 still to order |
-| <img src="images/bom/fan.svg" width="72"><br>Controller fan | Noctua `NF-A4x20 5V`, 40 x 40 x 20 mm, **5 V version** | 1 | [Noctua part page](https://www.noctua.at/en/products/nf-a4x20-5v) | ~$24-$35 |
+| <img src="images/bom/fan.svg" width="72"><br>Controller fan | **Arrived:** Noctua `NF-A4x20 5V`, 40 x 40 x 20 mm, **5 V version** | 1 | [Noctua part page](https://www.noctua.at/en/products/nf-a4x20-5v) | $0 still to order |
 | <img src="images/bom/limit_switch.png" width="72"><br>Limit switches | `ZW12-3` microswitches | 3 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DBq6eeF) | ~$10-$25 |
 | <img src="images/bom/estop.png" width="72"><br>Emergency stop | Select **19 mm** and **NO NC (3 PINS)**; latching red mushroom panel switch. Use the COM and NC terminals | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_c3Bn4RR5) | ~$10-$25 |
 | <img src="images/bom/cable_gland.png" width="72"><br>E-stop cable gland | `PG7` | 1 | [Official PAROL6 source](https://s.click.aliexpress.com/e/_DdJj62p) | ~$5-$10 |
@@ -323,11 +323,11 @@ After the 2026-07-16 recorded orders, the remaining full-arm purchases are no lo
 
 1. Verify the Octopus package includes the correct H723 board and eight TMC5160T Pro drivers.
 2. Finish the control-box safety/wiring parts: fused AC entry, fuses, wire, ferrules, DIN rail and ring/fork terminals.
-3. Order the remaining convenience connector kit, USB cable, fan and driver thermal interface if not already included.
+3. Order the remaining convenience connector kit, USB cable and driver thermal interface if not already included.
 4. Fill the fastener gaps not covered by the M3 starter kit.
 5. Print and assemble remaining structural STLs one joint group at a time.
 
-Do not reorder the motors, gearboxes, PSU, belts, pulleys, shaft couplers, major bearings, E-stop, PG7 glands, heat-set inserts, homing sensors, arm connectors, M3 starter kit or limit-switch pack unless an incoming part fails inspection.
+Do not reorder the motors, gearboxes, PSU, controller fan, belts, pulleys, shaft couplers, major bearings, E-stop, PG7 glands, heat-set inserts, homing sensors, arm connectors, M3 starter kit or limit-switch pack unless an incoming part fails inspection.
 
 Expected remaining hardware after the recorded orders: **about $210-$430 CAD** before tax and shipping if the Octopus order includes the eight TMC5160T Pro drivers. Add roughly **$80-$160 CAD** if the drivers were not included.
 

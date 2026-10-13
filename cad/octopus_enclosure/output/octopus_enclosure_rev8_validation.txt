@@ -1,0 +1,37 @@
+Octopus enclosure Rev8 validation
+==================================
+
+Unchanged enclosure parts
+-------------------------
+Tray: 126.0 x 206.0 x 56.8 mm
+Assembled tray and lid height: 59.8 mm
+
+Rev8 widened adapter
+--------------------
+Overall bounds: 126.0 x 50.5 x 59.8 mm
+Enclosure-facing body width: 126.0 mm
+Preserved base-interface width: 109.0 mm
+Untouched base-interface depth: Y=38.01 through Y=50.50 mm
+Boolean difference against the preserved Rev7 official-interface zone:
+  old minus new = 0.000000000 mm^3
+  new minus old = 0.000000000 mm^3
+
+Case-to-adapter M3 bore centres:
+  X = 16.5 and 109.5 mm
+  Z = 14.0 and 44.0 mm
+All four tray clearances and adapter pilots passed centre-void and
+surrounding-material checks.
+
+Rev8 flush adapter lid
+----------------------
+Print-orientation bounds: 90.9 x 46.6 x 20.0 mm
+Assembled top height: 59.8 mm
+Adapter/lid intersection volume: 0.000000000 mm^3
+Four supported M3 pilot locations: Y=34.0 mm, Z=43.0 and 55.0 mm,
+on both adapter sides.
+
+Mesh checks
+-----------
+Adapter: watertight, winding-consistent, one connected component
+Adapter lid: watertight, winding-consistent, one connected component
+Tray/adapter assembled intersection volume: 0.000000000 mm^3
